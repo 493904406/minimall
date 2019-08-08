@@ -1,5 +1,5 @@
 server:
-  port: 8002
+  port: 8001
 mybatis:
   type-aliases-package:  com.minimall.user.dao      #所以entity别名类所在路径
 

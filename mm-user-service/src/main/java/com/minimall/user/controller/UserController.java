@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -26,7 +27,11 @@ public class UserController {
     public List<User> getAllUser(){
         return userService.findAll();
     }
-
+    @RequestMapping(value = "/test")
+    @ResponseBody
+    public String feigntest(HttpServletRequest requet){
+        return "port:="+requet.getServerPort();
+    }
     @RequestMapping(value = "/user/{id}")
     @ResponseBody
     public User getUserById(@PathVariable("id") Long id){
