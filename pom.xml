@@ -32,6 +32,7 @@
         <module>mm-api-gateway</module>
         <module>mm-common-eureka</module>
         <module>user-consumer</module>
+        <module>ribbon-consumer</module>
     </modules>
 
     <properties>
@@ -44,6 +45,7 @@
         <cloud-eureka.version>1.4.5.RELEASE</cloud-eureka.version>
         <cloud-feign.version>1.4.5.RELEASE</cloud-feign.version>
         <cloud-coomon.version> 2.1.1.RELEASE</cloud-coomon.version>
+        <hystrix-version>1.4.7.RELEASE</hystrix-version>
         <spring-boot.version>2.1.6.RELEASE</spring-boot.version>
         <fastjson.version>1.2.54</fastjson.version>
         <mysql.connector.version>8.0.15</mysql.connector.version>
@@ -137,6 +139,11 @@
             </dependency>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-hystrix</artifactId>
+                <version>${hystrix-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-eureka</artifactId>
                 <version>${cloud-eureka.version}</version>
             </dependency>
@@ -163,7 +170,12 @@
                 <artifactId>druid</artifactId>
                 <version>${druid.starter.version}</version>
             </dependency>
-
+            <!--mybatis-->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis.version}</version>
+            </dependency>
             <!--pageHelper分页插件-->
             <!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper-spring-boot-starter -->
             <dependency>

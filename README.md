@@ -3,6 +3,8 @@ mini mall
 
 # springcloud
 
+mm-api-gateway 网关
+
 mm-common-eureka 服务注册中心
 
 mm-common-commont 评论服务
@@ -19,4 +21,11 @@ mm-common-user 用户中心
 
 mm-common-worker 定时任务服务
 
-user-consumer 弃用ribbon,采用feign
+user-consumer feign测试
+
+ribbon-consumer ribbon测试
+
+下载项目 启动顺序，mm-common-eureka,mm-api-gateway,
+mm-user-service,ribbon-consumer,user-consumer
+其余服务以后开发的时候涉及到业务负责人员，根据user模块去学习整理springclould,
+并使服务可用。
