@@ -13,3 +13,8 @@ eureka:
 spring:
   application:
     name: message-service
+
+management:
+  endpoint:
+    health:
+      show-details: always

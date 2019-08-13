@@ -3,6 +3,8 @@ mini mall
 
 # springcloud
 
+mm-admin-server 监控服务
+
 mm-api-gateway 网关
 
 mm-common-eureka 服务注册中心

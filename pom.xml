@@ -33,6 +33,7 @@
         <module>mm-common-eureka</module>
         <module>user-consumer</module>
         <module>ribbon-consumer</module>
+        <module>mm-admin-server</module>
     </modules>
 
     <properties>
@@ -53,6 +54,8 @@
         <druid.starter.version>1.1.12</druid.starter.version>
         <security.oauth.version>2.3.5.RELEASE</security.oauth.version>
         <security.oauth.auto.version>2.1.2.RELEASE</security.oauth.auto.version>
+        <admin.starter.server>2.1.6</admin.starter.server>
+        <admin.server.ui>2.1.6</admin.server.ui>
     </properties>
 
     <dependencies>

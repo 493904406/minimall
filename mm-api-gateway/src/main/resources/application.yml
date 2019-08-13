@@ -15,3 +15,7 @@ zuul:
     api-b:
       path: /user/**
       serviceId: user-consumer
+management:
+  endpoint:
+    health:
+      show-details: always

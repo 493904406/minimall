@@ -14,7 +14,7 @@ eureka:
 
 spring:
   application:
-    name: mm-user-service
+    name: user-service
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource                   #当前数据源操作类型
     driver-class-name: com.mysql.cj.jdbc.Driver                    #mysql驱动包
@@ -26,4 +26,9 @@ spring:
       initial-size: 5                                               #初始化连接数
       max-total: 5                                                  #最大连接数
       max-wait-millis: 200                                          #等待连接获取的最大超时时间
+
+management:
+  endpoint:
+    health:
+      show-details: always
 
