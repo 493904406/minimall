@@ -11,5 +11,9 @@
 
     <artifactId>mm-common</artifactId>
 
+    <dependencies>
+
+    </dependencies>
+
 
 </project>
