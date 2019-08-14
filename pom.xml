@@ -45,6 +45,7 @@
         <spring-cloud.version>Greenwich.SR1</spring-cloud.version>
         <cloud-eureka.version>1.4.5.RELEASE</cloud-eureka.version>
         <cloud-feign.version>1.4.5.RELEASE</cloud-feign.version>
+        <cloud-sleuth.version>2.1.2.RELEASE</cloud-sleuth.version>
         <cloud-coomon.version> 2.1.1.RELEASE</cloud-coomon.version>
         <hystrix-version>1.4.7.RELEASE</hystrix-version>
         <spring-boot.version>2.1.6.RELEASE</spring-boot.version>
@@ -81,6 +82,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <!--服务跟踪-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
+            <version>${cloud-sleuth.version}</version>
         </dependency>
     </dependencies>
     <!--依赖-->
