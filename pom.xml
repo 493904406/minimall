@@ -28,7 +28,6 @@
         <module>mm-worker-service</module>
         <module>mm-message-service</module>
         <module>mm-common</module>
-        <module>mm-common-config</module>
         <module>mm-api-gateway</module>
         <module>mm-common-eureka</module>
         <module>user-consumer</module>
