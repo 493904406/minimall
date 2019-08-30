@@ -8,6 +8,7 @@ spring:
   application:
     name: service-zuul
 zuul:
+  prefix: /api # 设置一个公共的前缀
   routes:
     api-a:
       path: /ribbon/**
@@ -15,6 +16,10 @@ zuul:
     api-b:
       path: /user/**
       serviceId: user-consumer
+    api-c:
+      path: /uaa/**
+      serviceId: sso-server
+
 
 management:
   endpoints:

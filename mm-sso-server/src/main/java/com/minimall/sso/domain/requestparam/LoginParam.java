@@ -1,4 +1,4 @@
-package com.minimall.user.domain.requestParam;
+package com.minimall.sso.domain.requestparam;
 
 import java.io.Serializable;
 

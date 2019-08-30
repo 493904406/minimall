@@ -17,6 +17,8 @@ mm-common-order 订单中心
 
 mm-common-search 搜索服务
 
+mm-sso-server 单点登录服务
+
 mm-common-system 系统其他
 
 mm-common-user 用户中心

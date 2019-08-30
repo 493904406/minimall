@@ -34,6 +34,7 @@
         <module>user-consumer</module>
         <module>ribbon-consumer</module>
         <module>mm-admin-server</module>
+        <module>mm-sso-server</module>
     </modules>
 
     <properties>
@@ -52,9 +53,11 @@
         <fastjson.version>1.2.54</fastjson.version>
         <mysql.connector.version>8.0.15</mysql.connector.version>
         <mybatis.version>1.1.1</mybatis.version>
+        <mybatis.generator.version>1.3.7</mybatis.generator.version>
         <druid.starter.version>1.1.12</druid.starter.version>
         <security.oauth.version>2.3.5.RELEASE</security.oauth.version>
         <security.oauth.auto.version>2.1.2.RELEASE</security.oauth.auto.version>
+        <security.version>2.1.7.RELEASE</security.version>
         <admin.starter.server>2.1.6</admin.starter.server>
         <admin.server.ui>2.1.6</admin.server.ui>
     </properties>
@@ -96,6 +99,11 @@
             <dependency>
                 <groupId>com.minimall</groupId>
                 <artifactId>mm-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.minimall</groupId>
+                <artifactId>mm-sso</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -186,6 +194,11 @@
                 <artifactId>mybatis-spring-boot-starter</artifactId>
                 <version>${mybatis.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-core</artifactId>
+                <version>${mybatis.generator.version}</version>
+            </dependency>
             <!--pageHelper分页插件-->
             <!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper-spring-boot-starter -->
             <dependency>
@@ -204,6 +217,12 @@
                 <artifactId>spring-security-oauth2-autoconfigure</artifactId>
                 <version>${security.oauth.auto.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-security</artifactId>
+                <version>${security.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
     <build>

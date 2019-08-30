@@ -1,13 +1,14 @@
-package com.minimall.user.controller;
+package com.minimall.sso.controller;
 
 import com.minimall.common.enums.BaseResponseCode;
 import com.minimall.common.responseDto.ResponseEntity;
 import com.minimall.common.responseDto.ResponseEntityFactory;
 import com.minimall.common.responseDto.ServiceResponse;
-import com.minimall.user.domain.requestParam.LoginParam;
+import com.minimall.sso.domain.requestparam.LoginParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
 /**
  * @author yanxubin
  * @Description
@@ -24,6 +25,7 @@ public class LoginController {
             serviceResponse.setCode(BaseResponseCode.SUCCESS.getCode());
         }else {
             serviceResponse.setCode(BaseResponseCode.FAILURE.getCode());
+            serviceResponse.setMsg(BaseResponseCode.FAILURE.getMsg());
         }
         return ResponseEntityFactory.build(serviceResponse);
     }

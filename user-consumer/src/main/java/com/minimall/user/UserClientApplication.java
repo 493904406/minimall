@@ -21,5 +21,6 @@ public class UserClientApplication {
     public static void main(String[] args) {
         SpringApplication.run(UserClientApplication.class, args);
     }
+
 }
 

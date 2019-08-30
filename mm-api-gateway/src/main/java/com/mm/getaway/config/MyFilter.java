@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
  * @date:2019/8/12
  * @mail jiangbo.ge@kuwo.cn
  */
-@Component
+//@Component
 public class MyFilter extends ZuulFilter {
 
     private static Logger log = LoggerFactory.getLogger(MyFilter.class);
