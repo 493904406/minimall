@@ -102,7 +102,7 @@
             </dependency>
             <dependency>
                 <groupId>com.minimall</groupId>
-                <artifactId>mm-sso</artifactId>
+                <artifactId>mm-sso-server</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
