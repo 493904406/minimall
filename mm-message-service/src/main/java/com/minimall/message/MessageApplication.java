@@ -1,4 +1,4 @@
-package com.minimall.commont;
+package com.minimall.message;
 
 
 import org.springframework.beans.factory.annotation.Value;
@@ -18,10 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 @EnableEurekaClient
 @RestController
-public class SpringcloudclientApplication {
+public class MessageApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringcloudclientApplication.class, args);
+        SpringApplication.run(MessageApplication.class, args);
     }
 
     @Value("${server.port}")

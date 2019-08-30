@@ -12,7 +12,7 @@ eureka:
 
 spring:
   application:
-    name: system-service
+    name: worker-service
 
 management:
   endpoints:
