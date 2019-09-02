@@ -33,7 +33,6 @@
         <module>user-consumer</module>
         <module>ribbon-consumer</module>
         <module>mm-admin-server</module>
-        <module>mm-sso-server</module>
     </modules>
 
     <properties>
@@ -59,6 +58,8 @@
         <security.version>2.1.7.RELEASE</security.version>
         <admin.starter.server>2.1.6</admin.starter.server>
         <admin.server.ui>2.1.6</admin.server.ui>
+        <pagehelper.version>1.2.12</pagehelper.version>
+        <weixin.miniapp.version>3.5.3.B</weixin.miniapp.version>
     </properties>
 
     <dependencies>
@@ -221,7 +222,12 @@
                 <artifactId>spring-boot-starter-security</artifactId>
                 <version>${security.version}</version>
             </dependency>
-
+            <!--微信-->
+            <dependency>
+                <groupId>com.github.binarywang</groupId>
+                <artifactId>weixin-java-miniapp</artifactId>
+                <version>${weixin.miniapp.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <build>
