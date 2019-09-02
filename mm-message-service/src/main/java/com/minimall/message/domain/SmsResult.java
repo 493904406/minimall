@@ -1,7 +1,10 @@
 package com.minimall.message.domain;
 
 /**
- * 发送短信的返回结果
+ * @author yanxubin
+ * @Description 发送短信的返回结果
+ * @date:2019/9/2
+ * @mail yxb_825@163.com
  */
 public class SmsResult {
     private boolean successful;

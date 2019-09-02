@@ -3,17 +3,20 @@ package com.minimall.message.service.impl;
 import cn.binarywang.wx.miniapp.api.WxMaService;
 import cn.binarywang.wx.miniapp.bean.WxMaTemplateData;
 import cn.binarywang.wx.miniapp.bean.WxMaTemplateMessage;
+import com.minimall.message.domain.entity.LitemallUserFormid;
+import com.minimall.message.service.LitemallUserFormIdService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.linlinjava.litemall.db.domain.LitemallUserFormid;
-import org.linlinjava.litemall.db.service.LitemallUserFormIdService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 微信模版消息通知
+ * @author yanxubin
+ * @Description 微信模版消息通知
+ * @date:2019/9/2
+ * @mail yxb_825@163.com
  */
 public class WxTemplateSender {
     private final Log logger = LogFactory.getLog(WxTemplateSender.class);
@@ -32,7 +35,7 @@ public class WxTemplateSender {
      * @param parms     详细内容
      */
     public void sendWechatMsg(String touser, String templatId, String[] parms) {
-        sendMsg(touser, templatId, parms, "", "", "");
+        sendMsg(touser, templatId, parms, "", "");
     }
 
     /**
@@ -44,22 +47,18 @@ public class WxTemplateSender {
      * @param page      跳转页面
      */
     public void sendWechatMsg(String touser, String templatId, String[] parms, String page) {
-        sendMsg(touser, templatId, parms, page, "", "");
+        sendMsg(touser, templatId, parms, page, "");
     }
 
-    private void sendMsg(String touser, String templatId, String[] parms, String page, String color,
-                         String emphasisKeyword) {
+    private void sendMsg(String touser, String templatId, String[] parms, String page, String emphasisKeyword) {
         LitemallUserFormid userFormid = formIdService.queryByOpenId(touser);
-        if (userFormid == null)
-            return;
-
+        if (userFormid == null){return;}
 
         WxMaTemplateMessage msg = new WxMaTemplateMessage();
         msg.setTemplateId(templatId);
         msg.setToUser(touser);
         msg.setFormId(userFormid.getFormid());
         msg.setPage(page);
-        msg.setColor(color);
         msg.setEmphasisKeyword(emphasisKeyword);
         msg.setData(createMsgData(parms));
 

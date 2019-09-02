@@ -4,6 +4,7 @@ import com.github.qcloudsms.SmsSingleSender;
 import com.github.qcloudsms.SmsSingleSenderResult;
 import com.github.qcloudsms.httpclient.HTTPException;
 import com.minimall.message.domain.SmsResult;
+import com.minimall.message.service.SmsSender;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

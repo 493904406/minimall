@@ -1,19 +1,31 @@
 package com.minimall.user.controller;
 import cn.binarywang.wx.miniapp.api.WxMaService;
+import cn.binarywang.wx.miniapp.bean.WxMaJscode2SessionResult;
+import cn.binarywang.wx.miniapp.bean.WxMaPhoneNumberInfo;
+import com.minimall.common.utils.*;
+import com.minimall.user.annotation.LoginUser;
+import com.minimall.user.domain.dto.WxLoginInfo;
+import com.minimall.user.domain.entity.LitemallUser;
+import com.minimall.user.domain.dto.UserInfo;
 import com.minimall.user.service.LitemallUserService;
+import com.minimall.user.service.impl.CaptchaCodeManager;
+import com.minimall.user.service.impl.UserTokenManager;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.tomcat.util.http.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static com.minimall.common.utils.WxResponseCode.*;
 
 /**
  * @author yanxubin
@@ -70,7 +82,7 @@ public class WxAuthController {
         }
 
         // 更新登录情况
-        user.setLastLoginTime(LocalDateTime.now());
+        user.setLastLoginTime(new Date());
         user.setLastLoginIp(IpUtil.getIpAddr(request));
         if (userService.updateById(user) == 0) {
             return ResponseUtil.updatedDataFailed();
@@ -130,7 +142,7 @@ public class WxAuthController {
             user.setGender(userInfo.getGender());
             user.setUserLevel((byte) 0);
             user.setStatus((byte) 0);
-            user.setLastLoginTime(LocalDateTime.now());
+            user.setLastLoginTime(new Date());
             user.setLastLoginIp(IpUtil.getIpAddr(request));
             user.setSessionKey(sessionKey);
 
@@ -139,7 +151,7 @@ public class WxAuthController {
             // 新用户发送注册优惠券
             couponAssignService.assignForRegister(user.getId());
         } else {
-            user.setLastLoginTime(LocalDateTime.now());
+            user.setLastLoginTime(new Date());
             user.setLastLoginIp(IpUtil.getIpAddr(request));
             user.setSessionKey(sessionKey);
             if (userService.updateById(user) == 0) {
