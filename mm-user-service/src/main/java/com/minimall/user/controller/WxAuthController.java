@@ -2,7 +2,9 @@ package com.minimall.user.controller;
 import cn.binarywang.wx.miniapp.api.WxMaService;
 import cn.binarywang.wx.miniapp.bean.WxMaJscode2SessionResult;
 import cn.binarywang.wx.miniapp.bean.WxMaPhoneNumberInfo;
+import com.minimall.common.enums.NotifyType;
 import com.minimall.common.utils.*;
+import com.minimall.message.service.impl.NotifyService;
 import com.minimall.user.annotation.LoginUser;
 import com.minimall.user.domain.dto.WxLoginInfo;
 import com.minimall.user.domain.entity.LitemallUser;
@@ -19,7 +21,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -48,8 +49,8 @@ public class WxAuthController {
     @Autowired
     private NotifyService notifyService;
 
-    @Autowired
-    private CouponAssignService couponAssignService;
+   /* @Autowired
+    private CouponAssignService couponAssignService;*/
 
     /**
      * 账号登录
@@ -149,7 +150,7 @@ public class WxAuthController {
             userService.add(user);
 
             // 新用户发送注册优惠券
-            couponAssignService.assignForRegister(user.getId());
+            //couponAssignService.assignForRegister(user.getId());
         } else {
             user.setLastLoginTime(new Date());
             user.setLastLoginIp(IpUtil.getIpAddr(request));
@@ -293,12 +294,12 @@ public class WxAuthController {
         user.setGender((byte) 0);
         user.setUserLevel((byte) 0);
         user.setStatus((byte) 0);
-        user.setLastLoginTime(LocalDateTime.now());
+        user.setLastLoginTime(new Date());
         user.setLastLoginIp(IpUtil.getIpAddr(request));
         userService.add(user);
 
         // 给新用户发送注册优惠券
-        couponAssignService.assignForRegister(user.getId());
+        //couponAssignService.assignForRegister(user.getId());
 
         // userInfo
         UserInfo userInfo = new UserInfo();
@@ -384,9 +385,9 @@ public class WxAuthController {
 
         //判断验证码是否正确
         String cacheCode = CaptchaCodeManager.getCachedCaptcha(mobile);
-        if (cacheCode == null || cacheCode.isEmpty() || !cacheCode.equals(code))
+        if (cacheCode == null || cacheCode.isEmpty() || !cacheCode.equals(code)){
             return ResponseUtil.fail(AUTH_CAPTCHA_UNMATCH, "验证码错误");
-
+        }
         List<LitemallUser> userList = userService.queryByMobile(mobile);
         LitemallUser user = null;
         if (userList.size() > 1) {
@@ -438,9 +439,9 @@ public class WxAuthController {
 
         //判断验证码是否正确
         String cacheCode = CaptchaCodeManager.getCachedCaptcha(mobile);
-        if (cacheCode == null || cacheCode.isEmpty() || !cacheCode.equals(code))
+        if (cacheCode == null || cacheCode.isEmpty() || !cacheCode.equals(code)){
             return ResponseUtil.fail(AUTH_CAPTCHA_UNMATCH, "验证码错误");
-
+        }
         List<LitemallUser> userList = userService.queryByMobile(mobile);
         LitemallUser user = null;
         if (userList.size() > 1) {

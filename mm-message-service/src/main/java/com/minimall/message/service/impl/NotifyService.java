@@ -1,13 +1,14 @@
 package com.minimall.message.service.impl;
 
 import com.minimall.message.domain.SmsResult;
-import com.minimall.message.domain.enums.NotifyType;
+import com.minimall.common.enums.NotifyType;
 import com.minimall.message.service.SmsSender;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +33,7 @@ public class NotifyService {
     private WxTemplateSender wxTemplateSender;
     private List<Map<String, String>> wxTemplate = new ArrayList<>();
 
+    @RequestMapping("")
     public boolean isMailEnable() {
         return mailSender != null;
     }
@@ -52,9 +54,9 @@ public class NotifyService {
      */
     @Async
     public void notifySms(String phoneNumber, String message) {
-        if (smsSender == null)
+        if (smsSender == null){
             return;
-
+        }
         smsSender.send(phoneNumber, message);
     }
 
@@ -89,9 +91,9 @@ public class NotifyService {
      * @return
      */
     public SmsResult notifySmsTemplateSync(String phoneNumber, NotifyType notifyType, String[] params) {
-        if (smsSender == null)
+        if (smsSender == null){
             return null;
-
+        }
         int templateId = Integer.parseInt(getTemplateId(notifyType, smsTemplate));
 
         return smsSender.sendWithTemplate(phoneNumber, templateId, params);
@@ -108,9 +110,9 @@ public class NotifyService {
      */
     @Async
     public void notifyWxTemplate(String touser, NotifyType notifyType, String[] params) {
-        if (wxTemplateSender == null)
+        if (wxTemplateSender == null){
             return;
-
+        }
         String templateId = getTemplateId(notifyType, wxTemplate);
         wxTemplateSender.sendWechatMsg(touser, templateId, params);
     }
@@ -127,9 +129,9 @@ public class NotifyService {
      */
     @Async
     public void notifyWxTemplate(String touser, NotifyType notifyType, String[] params, String page) {
-        if (wxTemplateSender == null)
+        if (wxTemplateSender == null){
             return;
-
+        }
         String templateId = getTemplateId(notifyType, wxTemplate);
         wxTemplateSender.sendWechatMsg(touser, templateId, params, page);
     }
@@ -143,9 +145,9 @@ public class NotifyService {
      */
     @Async
     public void notifyMail(String subject, String content) {
-        if (mailSender == null)
+        if (mailSender == null){
             return;
-
+        }
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(sendFrom);
         message.setTo(sendTo);
@@ -158,8 +160,9 @@ public class NotifyService {
         for (Map<String, String> item : values) {
             String notifyTypeStr = notifyType.getType();
 
-            if (item.get("name").equals(notifyTypeStr))
+            if (item.get("name").equals(notifyTypeStr)){
                 return item.get("templateId");
+            }
         }
         return null;
     }

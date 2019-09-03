@@ -1,4 +1,4 @@
-package com.minimall.message.domain.enums;
+package com.minimall.common.enums;
 
 public enum NotifyType {
     PAY_SUCCEED("paySucceed"),

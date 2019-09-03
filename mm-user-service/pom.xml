@@ -51,6 +51,10 @@
             <groupId>com.github.binarywang</groupId>
             <artifactId>weixin-java-miniapp</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.minimall</groupId>
+            <artifactId>mm-message-service</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
