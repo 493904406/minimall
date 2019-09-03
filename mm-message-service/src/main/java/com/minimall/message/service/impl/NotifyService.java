@@ -1,14 +1,11 @@
 package com.minimall.message.service.impl;
-
 import com.minimall.message.domain.SmsResult;
 import com.minimall.common.enums.NotifyType;
 import com.minimall.message.service.SmsSender;
-import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,8 +17,6 @@ import java.util.Map;
  * @date:2019/9/2
  * @mail yxb_825@163.com
  */
-@Service
-@FeignClient("notify-service")
 public class NotifyService {
     private MailSender mailSender;
     private String sendFrom;
@@ -33,7 +28,6 @@ public class NotifyService {
     private WxTemplateSender wxTemplateSender;
     private List<Map<String, String>> wxTemplate = new ArrayList<>();
 
-    @RequestMapping("")
     public boolean isMailEnable() {
         return mailSender != null;
     }
