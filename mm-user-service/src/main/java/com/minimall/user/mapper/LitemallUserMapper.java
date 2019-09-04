@@ -3,8 +3,11 @@ package com.minimall.user.mapper;
 import com.minimall.user.domain.entity.LitemallUser;
 import com.minimall.user.domain.entity.LitemallUserExample;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+@Mapper
 public interface LitemallUserMapper {
     long countByExample(LitemallUserExample example);
 
