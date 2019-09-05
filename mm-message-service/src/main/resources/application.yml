@@ -58,9 +58,9 @@ minimall:
       # 邮件通知配置,邮箱一般用于接收业务通知例如收到新的订单，sendto 定义邮件接收者，通常为商城运营人员
       enable: false
       host: smtp.exmail.qq.com
-      username: ex@ex.com.cn
-      password: XXXXXXXXXXXXX
-      sendfrom: ex@ex.com.cn
+      username: 493904406@qq.com
+      password: yxb15330090825
+      sendfrom: 493904406@qq.com
       sendto: 493904406@qq.com
 
     # 短消息模版通知配置
