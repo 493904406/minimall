@@ -10,9 +10,10 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
 
+
 spring:
   application:
-    name: message-service
+    name: config-service
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource                   #当前数据源操作类型
     driver-class-name: com.mysql.cj.jdbc.Driver                    #mysql驱动包
@@ -28,17 +29,19 @@ spring:
     mapperLocations: classpath:mapping/*.xml  #注意：一定要对应mapper映射xml文件的所在路径
     typeAliasesPackage: com.minimall.message.domain.entity  # 注意：对应实体类的路径
     configLocation: classpath:/mybatis-config.xml
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-      cors:
-        allowed-origins: "*"
-        allowed-methods: "*"
-  endpoint:
-    health:
-      show-details: always
+  management:
+    endpoints:
+      web:
+        exposure:
+          include: "*"
+        cors:
+          allowed-origins: "*"
+          allowed-methods: "*"
+    endpoint:
+      health:
+        show-details: always
+
+
 
 minimall:
   # 开发者应该设置成自己的wx相关信息
@@ -57,11 +60,11 @@ minimall:
     mail:
       # 邮件通知配置,邮箱一般用于接收业务通知例如收到新的订单，sendto 定义邮件接收者，通常为商城运营人员
       enable: false
-      host: smtp.exmail.qq.com
-      username: 493904406@qq.com
-      password: yxb15330090825
-      sendfrom: 493904406@qq.com
-      sendto: 493904406@qq.com
+      host: smtp.163.com
+      username: yxb_825@163.com
+      password: xubin825
+      sendfrom: yxb_825@163.com
+      sendto: xubin825@126.com
 
     # 短消息模版通知配置
     # 短信息用于通知客户，例如发货短信通知，注意配置格式；template-name，template-templateId 请参考 NotifyType 枚举值

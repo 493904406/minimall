@@ -33,6 +33,7 @@
         <module>user-consumer</module>
         <module>ribbon-consumer</module>
         <module>mm-admin-server</module>
+        <module>mm-config</module>
     </modules>
 
     <properties>
@@ -59,7 +60,8 @@
         <admin.starter.server>2.1.6</admin.starter.server>
         <admin.server.ui>2.1.6</admin.server.ui>
         <pagehelper.version>1.2.12</pagehelper.version>
-        <weixin.miniapp.version>3.5.3.B</weixin.miniapp.version>
+        <weixin.miniapp.version>3.5.2.B</weixin.miniapp.version>
+        <weixin.pay.version>3.5.2.B</weixin.pay.version>
     </properties>
 
     <dependencies>
@@ -103,7 +105,7 @@
             </dependency>
             <dependency>
                 <groupId>com.minimall</groupId>
-                <artifactId>mm-sso-server</artifactId>
+                <artifactId>mm-config</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -227,6 +229,11 @@
                 <groupId>com.github.binarywang</groupId>
                 <artifactId>weixin-java-miniapp</artifactId>
                 <version>${weixin.miniapp.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.binarywang</groupId>
+                <artifactId>weixin-java-pay</artifactId>
+                <version>${weixin.pay.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
