@@ -32,9 +32,9 @@ public class WxConfig {
 
     @Bean
     public WxMaService wxMaService(WxMaConfig maConfig) {
-        WxMaService service = new WxMaServiceImpl();
-        service.setWxMaConfig(maConfig);
-        return service;
+        WxMaService wxMaService = new WxMaServiceImpl();
+        wxMaService.setWxMaConfig(maConfig);
+        return wxMaService;
     }
 
     @Bean

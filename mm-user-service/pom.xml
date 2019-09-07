@@ -17,6 +17,10 @@
             <artifactId>mm-common</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.minimall</groupId>
+            <artifactId>mm-message-service</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
         </dependency>
@@ -51,10 +55,7 @@
             <groupId>com.github.binarywang</groupId>
             <artifactId>weixin-java-miniapp</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.minimall</groupId>
-            <artifactId>mm-message-service</artifactId>
-        </dependency>
+
     </dependencies>
 
     <build>
