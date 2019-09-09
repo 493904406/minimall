@@ -4,7 +4,7 @@ import cn.binarywang.wx.miniapp.bean.WxMaJscode2SessionResult;
 import cn.binarywang.wx.miniapp.bean.WxMaPhoneNumberInfo;
 import com.minimall.common.enums.NotifyType;
 import com.minimall.common.utils.*;
-import com.minimall.message.service.impl.NotifyService;
+import com.minimall.message.service.NotifyService;
 import com.minimall.user.annotation.LoginUser;
 import com.minimall.user.domain.dto.WxLoginInfo;
 import com.minimall.user.domain.entity.LitemallUser;

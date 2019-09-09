@@ -4,9 +4,10 @@ import com.github.qcloudsms.SmsSingleSender;
 import com.github.qcloudsms.SmsSingleSenderResult;
 import com.github.qcloudsms.httpclient.HTTPException;
 import com.minimall.message.domain.SmsResult;
-import com.minimall.message.service.SmsSender;
+import com.minimall.message.service.SmsSenderService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 
@@ -16,7 +17,8 @@ import java.io.IOException;
  * @date:2019/9/2
  * @mail yxb_825@163.com
  */
-public class TencentSmsSender implements SmsSender {
+@Service
+public class TencentSmsSender implements SmsSenderService {
     private final Log logger = LogFactory.getLog(TencentSmsSender.class);
 
     private SmsSingleSender sender;

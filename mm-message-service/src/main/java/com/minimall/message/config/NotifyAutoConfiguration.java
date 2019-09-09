@@ -1,9 +1,5 @@
 package com.minimall.message.config;
 
-import com.github.qcloudsms.SmsSingleSender;
-import com.minimall.message.service.impl.NotifyService;
-import com.minimall.message.service.impl.TencentSmsSender;
-import com.minimall.message.service.impl.WxTemplateSender;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -29,30 +25,6 @@ public class NotifyAutoConfiguration {
         this.properties = properties;
     }
 
-    @Bean
-    public NotifyService notifyService() {
-        NotifyService notifyService = new NotifyService();
-
-        NotifyProperties.Mail mailConfig = properties.getMail();
-        if (mailConfig.isEnable()) {
-            notifyService.setMailSender(mailSender());
-            notifyService.setSendFrom(mailConfig.getSendfrom());
-            notifyService.setSendTo(mailConfig.getSendto());
-        }
-
-        NotifyProperties.Sms smsConfig = properties.getSms();
-        if (smsConfig.isEnable()) {
-            notifyService.setSmsSender(tencentSmsSender());
-            notifyService.setSmsTemplate(smsConfig.getTemplate());
-        }
-
-        NotifyProperties.Wx wxConfig = properties.getWx();
-        if (wxConfig.isEnable()) {
-            notifyService.setWxTemplateSender(wxTemplateSender());
-            notifyService.setWxTemplate(wxConfig.getTemplate());
-        }
-        return notifyService;
-    }
 
     @Bean
     public JavaMailSender mailSender() {
@@ -63,19 +35,5 @@ public class NotifyAutoConfiguration {
         mailSender.setUsername(mailConfig.getUsername());
         mailSender.setPassword(mailConfig.getPassword());
         return mailSender;
-    }
-
-    @Bean
-    public WxTemplateSender wxTemplateSender() {
-        WxTemplateSender wxTemplateSender = new WxTemplateSender();
-        return wxTemplateSender;
-    }
-
-    @Bean
-    public TencentSmsSender tencentSmsSender() {
-        NotifyProperties.Sms smsConfig = properties.getSms();
-        TencentSmsSender smsSender = new TencentSmsSender();
-        smsSender.setSender(new SmsSingleSender(smsConfig.getAppid(), smsConfig.getAppkey()));
-        return smsSender;
     }
 }

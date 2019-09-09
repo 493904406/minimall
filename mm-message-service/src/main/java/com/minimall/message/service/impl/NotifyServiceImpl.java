@@ -1,10 +1,12 @@
 package com.minimall.message.service.impl;
 import com.minimall.message.domain.SmsResult;
 import com.minimall.common.enums.NotifyType;
-import com.minimall.message.service.SmsSender;
+import com.minimall.message.service.NotifyService;
+import com.minimall.message.service.SmsSenderService;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,25 +18,27 @@ import java.util.Map;
  * @date:2019/9/2
  * @mail yxb_825@163.com
  */
-public class NotifyService {
+@Service
+public class NotifyServiceImpl implements NotifyService {
     private MailSender mailSender;
     private String sendFrom;
     private String sendTo;
 
-    private SmsSender smsSender;
+    private SmsSenderService smsSender;
     private List<Map<String, String>> smsTemplate = new ArrayList<>();
 
     private WxTemplateSender wxTemplateSender;
     private List<Map<String, String>> wxTemplate = new ArrayList<>();
 
+    @Override
     public boolean isMailEnable() {
         return mailSender != null;
     }
-
+    @Override
     public boolean isSmsEnable() {
         return smsSender != null;
     }
-
+    @Override
     public boolean isWxEnable() {
         return wxTemplateSender != null;
     }
@@ -45,6 +49,7 @@ public class NotifyService {
      * @param phoneNumber 接收通知的电话号码
      * @param message     短消息内容，这里短消息内容必须已经在短信平台审核通过
      */
+    @Override
     @Async
     public void notifySms(String phoneNumber, String message) {
         if (smsSender == null){
@@ -60,6 +65,7 @@ public class NotifyService {
      * @param notifyType  通知类别，通过该枚举值在配置文件中获取相应的模版ID
      * @param params      通知模版内容里的参数，类似"您的验证码为{1}"中{1}的值
      */
+    @Override
     @Async
     public void notifySmsTemplate(String phoneNumber, NotifyType notifyType, String[] params) {
         if (smsSender == null) {
@@ -83,6 +89,7 @@ public class NotifyService {
      * @param params      通知模版内容里的参数，类似"您的验证码为{1}"中{1}的值
      * @return
      */
+    @Override
     public SmsResult notifySmsTemplateSync(String phoneNumber, NotifyType notifyType, String[] params) {
         if (smsSender == null){
             return null;
@@ -101,6 +108,7 @@ public class NotifyService {
      * @param notifyType 通知类别，通过该枚举值在配置文件中获取相应的模版ID
      * @param params     通知模版内容里的参数，类似"您的验证码为{1}"中{1}的值
      */
+    @Override
     @Async
     public void notifyWxTemplate(String touser, NotifyType notifyType, String[] params) {
         if (wxTemplateSender == null){
@@ -120,6 +128,7 @@ public class NotifyService {
      * @param params     通知模版内容里的参数，类似"您的验证码为{1}"中{1}的值
      * @param page       点击消息跳转的页面
      */
+    @Override
     @Async
     public void notifyWxTemplate(String touser, NotifyType notifyType, String[] params, String page) {
         if (wxTemplateSender == null){
@@ -136,6 +145,7 @@ public class NotifyService {
      * @param subject 邮件标题
      * @param content 邮件内容
      */
+    @Override
     @Async
     public void notifyMail(String subject, String content) {
         if (mailSender == null){
@@ -160,31 +170,4 @@ public class NotifyService {
         return null;
     }
 
-    public void setMailSender(MailSender mailSender) {
-        this.mailSender = mailSender;
-    }
-
-    public void setSendFrom(String sendFrom) {
-        this.sendFrom = sendFrom;
-    }
-
-    public void setSendTo(String sendTo) {
-        this.sendTo = sendTo;
-    }
-
-    public void setSmsSender(SmsSender smsSender) {
-        this.smsSender = smsSender;
-    }
-
-    public void setSmsTemplate(List<Map<String, String>> smsTemplate) {
-        this.smsTemplate = smsTemplate;
-    }
-
-    public void setWxTemplateSender(WxTemplateSender wxTemplateSender) {
-        this.wxTemplateSender = wxTemplateSender;
-    }
-
-    public void setWxTemplate(List<Map<String, String>> wxTemplate) {
-        this.wxTemplate = wxTemplate;
-    }
 }

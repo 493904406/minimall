@@ -2,7 +2,7 @@ package com.minimall.message.service;
 
 import com.minimall.message.domain.SmsResult;
 
-public interface SmsSender {
+public interface SmsSenderService {
 
     /**
      * 发送短信息
