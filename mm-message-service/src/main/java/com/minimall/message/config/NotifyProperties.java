@@ -1,11 +1,18 @@
 package com.minimall.message.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author yanxubin
+ * @Description
+ * @date:2019/9/7
+ * @mail yxb_825@163.com
+ */
 @ConfigurationProperties(prefix = "minimall.notify")
 public class NotifyProperties {
     private Mail mail;

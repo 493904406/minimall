@@ -12,6 +12,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
+/**
+ * @author yanxubin
+ * @Description
+ * @date:2019/9/7
+ * @mail yxb_825@163.com
+ */
 @Configuration
 @EnableConfigurationProperties(NotifyProperties.class)
 public class NotifyAutoConfiguration {

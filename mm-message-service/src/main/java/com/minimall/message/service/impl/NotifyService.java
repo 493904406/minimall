@@ -5,7 +5,6 @@ import com.minimall.message.service.SmsSender;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.scheduling.annotation.Async;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
