@@ -15,10 +15,10 @@ zuul:
       serviceId: ribbon-consumer
     api-b:
       path: /user/**
-      serviceId: user-consumer
+      serviceId: user-service
     api-c:
-      path: /uaa/**
-      serviceId: sso-server
+      path: /notify/**
+      serviceId: notify-service
 
 
 management:
