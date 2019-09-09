@@ -55,7 +55,6 @@ public class WxTemplateSender {
     private void sendMsg(String touser, String templatId, String[] parms, String page, String emphasisKeyword) {
         LitemallUserFormid userFormid = formIdService.queryByOpenId(touser);
         if (userFormid == null){return;}
-
         WxMaTemplateMessage msg = new WxMaTemplateMessage();
         msg.setTemplateId(templatId);
         msg.setToUser(touser);

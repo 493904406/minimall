@@ -19,13 +19,10 @@ import java.io.IOException;
  * @date:2019/9/2
  * @mail yxb_825@163.com
  */
-@Service
 public class TencentSmsSender implements SmsSenderService {
     private final Log logger = LogFactory.getLog(TencentSmsSender.class);
 
     private SmsSingleSender sender;
-    @Autowired
-    private NotifyProperties properties;
 
     public SmsSingleSender getSender() {
         return sender;
@@ -36,18 +33,12 @@ public class TencentSmsSender implements SmsSenderService {
     }
 
 
-    private void init(){
-        NotifyProperties.Sms smsConfig = properties.getSms();
-        TencentSmsSender smsSender = new TencentSmsSender();
-        smsSender.setSender(new SmsSingleSender(smsConfig.getAppid(), smsConfig.getAppkey()));
-    }
-
-
     @Override
     public SmsResult send(String phone, String content) {
         try {
+            logger.info("##phone:"+ phone + "content:" + content);
             SmsSingleSenderResult result = sender.send(0, "86", phone, content, "", "");
-            logger.debug(result);
+            logger.info(result);
 
             SmsResult smsResult = new SmsResult();
             smsResult.setSuccessful(true);

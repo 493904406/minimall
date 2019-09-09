@@ -1,8 +1,10 @@
 package com.minimall.message.service.impl;
+import com.github.qcloudsms.SmsSingleSender;
 import com.minimall.message.domain.SmsResult;
 import com.minimall.common.enums.NotifyType;
 import com.minimall.message.service.NotifyService;
 import com.minimall.message.service.SmsSenderService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.scheduling.annotation.Async;
@@ -24,8 +26,7 @@ public class NotifyServiceImpl implements NotifyService {
     private MailSender mailSender;
     private String sendFrom;
     private String sendTo;
-    @Resource(name = "tencentSmsSender")
-    private TencentSmsSender smsSender;
+    private SmsSenderService smsSender;
     private List<Map<String, String>> smsTemplate = new ArrayList<>();
     private WxTemplateSender wxTemplateSender;
     private List<Map<String, String>> wxTemplate = new ArrayList<>();

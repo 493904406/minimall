@@ -1,5 +1,7 @@
 package com.minimall.message.config;
 
+import com.github.qcloudsms.SmsSingleSender;
+import com.minimall.message.service.impl.TencentSmsSender;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,5 +38,13 @@ public class NotifyAutoConfiguration {
         mailSender.setUsername(mailConfig.getUsername());
         mailSender.setPassword(mailConfig.getPassword());
         return mailSender;
+    }
+
+    @Bean
+    public TencentSmsSender tencentSmsSender() {
+        NotifyProperties.Sms smsConfig = properties.getSms();
+        TencentSmsSender smsSender = new TencentSmsSender();
+        smsSender.setSender(new SmsSingleSender(smsConfig.getAppid(), smsConfig.getAppkey()));
+        return smsSender;
     }
 }
