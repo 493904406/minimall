@@ -2,6 +2,7 @@ package com.minimall.message.config;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,6 +20,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 public class NotifyAutoConfiguration {
     private final Log logger = LogFactory.getLog(NotifyAutoConfiguration.class);
 
+    @Autowired
     private final NotifyProperties properties;
 
     public NotifyAutoConfiguration(NotifyProperties properties) {
@@ -30,7 +32,6 @@ public class NotifyAutoConfiguration {
     public JavaMailSender mailSender() {
         NotifyProperties.Mail mailConfig = properties.getMail();
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-        logger.info("host:"+ mailConfig.getHost()+ ",username:" +  mailConfig.getUsername() + ",password:" + mailConfig.getPassword());
         mailSender.setHost(mailConfig.getHost());
         mailSender.setUsername(mailConfig.getUsername());
         mailSender.setPassword(mailConfig.getPassword());

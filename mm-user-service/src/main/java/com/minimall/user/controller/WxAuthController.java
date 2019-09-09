@@ -51,6 +51,12 @@ public class WxAuthController {
    /* @Autowired
     private CouponAssignService couponAssignService;*/
 
+   @PostMapping("msg")
+   public Object sendMsg(){
+       notifyService.notifySms("15330090825","测试第一条短信");
+       return ResponseUtil.ok();
+   }
+
     /**
      * 账号登录
      *

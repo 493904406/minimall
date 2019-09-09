@@ -8,6 +8,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -23,10 +24,9 @@ public class NotifyServiceImpl implements NotifyService {
     private MailSender mailSender;
     private String sendFrom;
     private String sendTo;
-
-    private SmsSenderService smsSender;
+    @Resource(name = "tencentSmsSender")
+    private TencentSmsSender smsSender;
     private List<Map<String, String>> smsTemplate = new ArrayList<>();
-
     private WxTemplateSender wxTemplateSender;
     private List<Map<String, String>> wxTemplate = new ArrayList<>();
 

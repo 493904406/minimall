@@ -8,6 +8,7 @@ import com.minimall.message.service.LitemallUserFormIdService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,7 @@ import java.util.List;
  * @date:2019/9/2
  * @mail yxb_825@163.com
  */
+@Service
 public class WxTemplateSender {
     private final Log logger = LogFactory.getLog(WxTemplateSender.class);
 

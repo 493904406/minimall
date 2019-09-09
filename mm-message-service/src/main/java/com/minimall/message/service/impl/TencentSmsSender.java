@@ -8,9 +8,9 @@ import com.minimall.message.domain.SmsResult;
 import com.minimall.message.service.SmsSenderService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import java.io.IOException;
 
 /**
@@ -24,7 +24,7 @@ public class TencentSmsSender implements SmsSenderService {
     private final Log logger = LogFactory.getLog(TencentSmsSender.class);
 
     private SmsSingleSender sender;
-
+    @Autowired
     private NotifyProperties properties;
 
     public SmsSingleSender getSender() {
@@ -35,7 +35,7 @@ public class TencentSmsSender implements SmsSenderService {
         this.sender = sender;
     }
 
-    @PostConstruct
+
     private void init(){
         NotifyProperties.Sms smsConfig = properties.getSms();
         TencentSmsSender smsSender = new TencentSmsSender();
