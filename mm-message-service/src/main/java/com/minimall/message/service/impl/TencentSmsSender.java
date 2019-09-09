@@ -3,12 +3,14 @@ package com.minimall.message.service.impl;
 import com.github.qcloudsms.SmsSingleSender;
 import com.github.qcloudsms.SmsSingleSenderResult;
 import com.github.qcloudsms.httpclient.HTTPException;
+import com.minimall.message.config.NotifyProperties;
 import com.minimall.message.domain.SmsResult;
 import com.minimall.message.service.SmsSenderService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.io.IOException;
 
 /**
@@ -23,6 +25,8 @@ public class TencentSmsSender implements SmsSenderService {
 
     private SmsSingleSender sender;
 
+    private NotifyProperties properties;
+
     public SmsSingleSender getSender() {
         return sender;
     }
@@ -30,6 +34,14 @@ public class TencentSmsSender implements SmsSenderService {
     public void setSender(SmsSingleSender sender) {
         this.sender = sender;
     }
+
+    @PostConstruct
+    private void init(){
+        NotifyProperties.Sms smsConfig = properties.getSms();
+        TencentSmsSender smsSender = new TencentSmsSender();
+        smsSender.setSender(new SmsSingleSender(smsConfig.getAppid(), smsConfig.getAppkey()));
+    }
+
 
     @Override
     public SmsResult send(String phone, String content) {
