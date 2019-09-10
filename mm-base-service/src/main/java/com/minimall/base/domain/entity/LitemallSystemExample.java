@@ -1,4 +1,4 @@
-package com.minimall.user.domain.entity;
+package com.minimall.base.domain.entity;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -841,6 +841,6 @@ public class LitemallSystemExample {
     }
 
     public interface IExampleWhen {
-        void example(com.minimall.user.domain.entity.LitemallSystemExample example);
+        void example(LitemallSystemExample example);
     }
 }

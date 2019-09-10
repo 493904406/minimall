@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.minimall.user.mapper.LitemallCouponUserMapper">
-  <resultMap id="BaseResultMap" type="com.minimall.user.domain.entity.LitemallCouponUser">
+<mapper namespace="com.minimall.base.mapper.LitemallCouponUserMapper">
+  <resultMap id="BaseResultMap" type="com.minimall.base.domain.entity.LitemallCouponUser">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="coupon_id" jdbcType="INTEGER" property="couponId" />
@@ -76,7 +76,7 @@
     id, user_id, coupon_id, `status`, used_time, start_time, end_time, order_id, add_time,
     update_time, deleted
   </sql>
-  <select id="selectByExample" parameterType="com.minimall.user.domain.entity.LitemallCouponUserExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.minimall.base.domain.entity.LitemallCouponUserExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -153,13 +153,13 @@
     delete from litemall_coupon_user
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.minimall.user.domain.entity.LitemallCouponUserExample">
+  <delete id="deleteByExample" parameterType="com.minimall.base.domain.entity.LitemallCouponUserExample">
     delete from litemall_coupon_user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.minimall.user.domain.entity.LitemallCouponUser">
+  <insert id="insert" parameterType="com.minimall.base.domain.entity.LitemallCouponUser">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -172,7 +172,7 @@
       #{orderId,jdbcType=INTEGER}, #{addTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP},
       #{deleted,jdbcType=BIT})
   </insert>
-  <insert id="insertSelective" parameterType="com.minimall.user.domain.entity.LitemallCouponUser">
+  <insert id="insertSelective" parameterType="com.minimall.base.domain.entity.LitemallCouponUser">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -242,7 +242,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.minimall.user.domain.entity.LitemallCouponUserExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.minimall.base.domain.entity.LitemallCouponUserExample" resultType="java.lang.Long">
     select count(*) from litemall_coupon_user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -306,7 +306,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.minimall.user.domain.entity.LitemallCouponUser">
+  <update id="updateByPrimaryKeySelective" parameterType="com.minimall.base.domain.entity.LitemallCouponUser">
     update litemall_coupon_user
     <set>
       <if test="userId != null">
@@ -342,7 +342,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.minimall.user.domain.entity.LitemallCouponUser">
+  <update id="updateByPrimaryKey" parameterType="com.minimall.base.domain.entity.LitemallCouponUser">
     update litemall_coupon_user
     set user_id = #{userId,jdbcType=INTEGER},
       coupon_id = #{couponId,jdbcType=INTEGER},
@@ -356,7 +356,7 @@
       deleted = #{deleted,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectOneByExample" parameterType="com.minimall.user.domain.entity.LitemallCouponUserExample" resultMap="BaseResultMap">
+  <select id="selectOneByExample" parameterType="com.minimall.base.domain.entity.LitemallCouponUserExample" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from litemall_coupon_user

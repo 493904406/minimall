@@ -1,19 +1,29 @@
-package com.minimall.user.domain.entity;
+package com.minimall.base.domain.entity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 
-public class LitemallSystem {
+public class LitemallCouponUser {
     public static final Boolean IS_DELETED = Deleted.IS_DELETED.value();
 
     public static final Boolean NOT_DELETED = Deleted.NOT_DELETED.value();
 
     private Integer id;
 
-    private String keyName;
+    private Integer userId;
 
-    private String keyValue;
+    private Integer couponId;
+
+    private Short status;
+
+    private Date usedTime;
+
+    private Date startTime;
+
+    private Date endTime;
+
+    private Integer orderId;
 
     private Date addTime;
 
@@ -29,20 +39,60 @@ public class LitemallSystem {
         this.id = id;
     }
 
-    public String getKeyName() {
-        return keyName;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setKeyName(String keyName) {
-        this.keyName = keyName;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
-    public String getKeyValue() {
-        return keyValue;
+    public Integer getCouponId() {
+        return couponId;
     }
 
-    public void setKeyValue(String keyValue) {
-        this.keyValue = keyValue;
+    public void setCouponId(Integer couponId) {
+        this.couponId = couponId;
+    }
+
+    public Short getStatus() {
+        return status;
+    }
+
+    public void setStatus(Short status) {
+        this.status = status;
+    }
+
+    public Date getUsedTime() {
+        return usedTime;
+    }
+
+    public void setUsedTime(Date usedTime) {
+        this.usedTime = usedTime;
+    }
+
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
+
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
+    }
+
+    public Integer getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Integer orderId) {
+        this.orderId = orderId;
     }
 
     public Date getAddTime() {
@@ -82,8 +132,13 @@ public class LitemallSystem {
         sb.append(", IS_DELETED=").append(IS_DELETED);
         sb.append(", NOT_DELETED=").append(NOT_DELETED);
         sb.append(", id=").append(id);
-        sb.append(", keyName=").append(keyName);
-        sb.append(", keyValue=").append(keyValue);
+        sb.append(", userId=").append(userId);
+        sb.append(", couponId=").append(couponId);
+        sb.append(", status=").append(status);
+        sb.append(", usedTime=").append(usedTime);
+        sb.append(", startTime=").append(startTime);
+        sb.append(", endTime=").append(endTime);
+        sb.append(", orderId=").append(orderId);
         sb.append(", addTime=").append(addTime);
         sb.append(", updateTime=").append(updateTime);
         sb.append(", deleted=").append(deleted);
@@ -102,10 +157,15 @@ public class LitemallSystem {
         if (getClass() != that.getClass()) {
             return false;
         }
-        LitemallSystem other = (LitemallSystem) that;
+        LitemallCouponUser other = (LitemallCouponUser) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getKeyName() == null ? other.getKeyName() == null : this.getKeyName().equals(other.getKeyName()))
-            && (this.getKeyValue() == null ? other.getKeyValue() == null : this.getKeyValue().equals(other.getKeyValue()))
+            && (this.getUserId() == null ? other.getUserId() == null : this.getUserId().equals(other.getUserId()))
+            && (this.getCouponId() == null ? other.getCouponId() == null : this.getCouponId().equals(other.getCouponId()))
+            && (this.getStatus() == null ? other.getStatus() == null : this.getStatus().equals(other.getStatus()))
+            && (this.getUsedTime() == null ? other.getUsedTime() == null : this.getUsedTime().equals(other.getUsedTime()))
+            && (this.getStartTime() == null ? other.getStartTime() == null : this.getStartTime().equals(other.getStartTime()))
+            && (this.getEndTime() == null ? other.getEndTime() == null : this.getEndTime().equals(other.getEndTime()))
+            && (this.getOrderId() == null ? other.getOrderId() == null : this.getOrderId().equals(other.getOrderId()))
             && (this.getAddTime() == null ? other.getAddTime() == null : this.getAddTime().equals(other.getAddTime()))
             && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()))
             && (this.getDeleted() == null ? other.getDeleted() == null : this.getDeleted().equals(other.getDeleted()));
@@ -116,8 +176,13 @@ public class LitemallSystem {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getKeyName() == null) ? 0 : getKeyName().hashCode());
-        result = prime * result + ((getKeyValue() == null) ? 0 : getKeyValue().hashCode());
+        result = prime * result + ((getUserId() == null) ? 0 : getUserId().hashCode());
+        result = prime * result + ((getCouponId() == null) ? 0 : getCouponId().hashCode());
+        result = prime * result + ((getStatus() == null) ? 0 : getStatus().hashCode());
+        result = prime * result + ((getUsedTime() == null) ? 0 : getUsedTime().hashCode());
+        result = prime * result + ((getStartTime() == null) ? 0 : getStartTime().hashCode());
+        result = prime * result + ((getEndTime() == null) ? 0 : getEndTime().hashCode());
+        result = prime * result + ((getOrderId() == null) ? 0 : getOrderId().hashCode());
         result = prime * result + ((getAddTime() == null) ? 0 : getAddTime().hashCode());
         result = prime * result + ((getUpdateTime() == null) ? 0 : getUpdateTime().hashCode());
         result = prime * result + ((getDeleted() == null) ? 0 : getDeleted().hashCode());
@@ -152,8 +217,13 @@ public class LitemallSystem {
 
     public enum Column {
         id("id", "id", "INTEGER", false),
-        keyName("key_name", "keyName", "VARCHAR", false),
-        keyValue("key_value", "keyValue", "VARCHAR", false),
+        userId("user_id", "userId", "INTEGER", false),
+        couponId("coupon_id", "couponId", "INTEGER", false),
+        status("status", "status", "SMALLINT", true),
+        usedTime("used_time", "usedTime", "TIMESTAMP", false),
+        startTime("start_time", "startTime", "TIMESTAMP", false),
+        endTime("end_time", "endTime", "TIMESTAMP", false),
+        orderId("order_id", "orderId", "INTEGER", false),
         addTime("add_time", "addTime", "TIMESTAMP", false),
         updateTime("update_time", "updateTime", "TIMESTAMP", false),
         deleted("deleted", "deleted", "BIT", false);

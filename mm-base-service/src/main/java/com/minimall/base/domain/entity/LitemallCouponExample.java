@@ -1,4 +1,4 @@
-package com.minimall.user.domain.entity;
+package com.minimall.base.domain.entity;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -2166,6 +2166,6 @@ public class LitemallCouponExample {
     }
 
     public interface IExampleWhen {
-        void example(com.minimall.user.domain.entity.LitemallCouponExample example);
+        void example(LitemallCouponExample example);
     }
 }

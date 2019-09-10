@@ -1,10 +1,13 @@
-package com.minimall.user.mapper;
+package com.minimall.base.mapper;
 
-import com.minimall.user.domain.entity.LitemallSystem;
-import com.minimall.user.domain.entity.LitemallSystemExample;
+import com.minimall.base.domain.entity.LitemallSystem;
+import com.minimall.base.domain.entity.LitemallSystemExample;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+@Mapper
 public interface LitemallSystemMapper {
     long countByExample(LitemallSystemExample example);
 

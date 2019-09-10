@@ -1,10 +1,14 @@
-package com.minimall.user.mapper;
+package com.minimall.base.mapper;
 
-import com.minimall.user.domain.entity.LitemallCouponUser;
-import com.minimall.user.domain.entity.LitemallCouponUserExample;
-import java.util.List;
+
+import com.minimall.base.domain.entity.LitemallCouponUser;
+import com.minimall.base.domain.entity.LitemallCouponUserExample;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
+@Mapper
 public interface LitemallCouponUserMapper {
     long countByExample(LitemallCouponUserExample example);
 

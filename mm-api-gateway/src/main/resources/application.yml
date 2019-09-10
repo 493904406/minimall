@@ -11,8 +11,8 @@ zuul:
   prefix: /wx # 设置一个公共的前缀
   routes:
     api-a:
-      path: /**
-      serviceId: ribbon-consumer
+      path: base/**
+      serviceId: base-service
     api-b:
       path: user/**
       serviceId: user-service

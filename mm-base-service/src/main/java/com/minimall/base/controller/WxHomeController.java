@@ -1,6 +1,11 @@
 package com.minimall.base.controller;
 
+import com.minimall.base.annotation.LoginUser;
+import com.minimall.base.domain.entity.LitemallCategory;
+import com.minimall.base.domain.entity.LitemallGoods;
 import com.minimall.base.service.*;
+import com.minimall.base.service.cache.HomeCacheManager;
+import com.minimall.base.system.SystemConfig;
 import com.minimall.common.utils.ResponseUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -20,7 +25,7 @@ import java.util.concurrent.*;
  * 首页服务
  */
 @RestController
-@RequestMapping("/wx/home")
+@RequestMapping("/home")
 @Validated
 public class WxHomeController {
     private final Log logger = LogFactory.getLog(WxHomeController.class);
