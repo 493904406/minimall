@@ -1,33 +1,34 @@
-package com.minimall.user.domain.entity;
+package com.minimall.base.domain.entity;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 
-public class LitemallAdmin {
+public class LitemallGrouponRules {
     public static final Boolean IS_DELETED = Deleted.IS_DELETED.value();
 
     public static final Boolean NOT_DELETED = Deleted.NOT_DELETED.value();
 
     private Integer id;
 
-    private String username;
+    private Integer goodsId;
 
-    private String password;
+    private String goodsName;
 
-    private String lastLoginIp;
+    private String picUrl;
 
-    private Date lastLoginTime;
+    private BigDecimal discount;
 
-    private String avatar;
+    private Integer discountMember;
 
     private Date addTime;
 
     private Date updateTime;
 
-    private Boolean deleted;
+    private Date expireTime;
 
-    private Integer[] roleIds;
+    private Boolean deleted;
 
     public Integer getId() {
         return id;
@@ -37,44 +38,44 @@ public class LitemallAdmin {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public Integer getGoodsId() {
+        return goodsId;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setGoodsId(Integer goodsId) {
+        this.goodsId = goodsId;
     }
 
-    public String getPassword() {
-        return password;
+    public String getGoodsName() {
+        return goodsName;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setGoodsName(String goodsName) {
+        this.goodsName = goodsName;
     }
 
-    public String getLastLoginIp() {
-        return lastLoginIp;
+    public String getPicUrl() {
+        return picUrl;
     }
 
-    public void setLastLoginIp(String lastLoginIp) {
-        this.lastLoginIp = lastLoginIp;
+    public void setPicUrl(String picUrl) {
+        this.picUrl = picUrl;
     }
 
-    public Date getLastLoginTime() {
-        return lastLoginTime;
+    public BigDecimal getDiscount() {
+        return discount;
     }
 
-    public void setLastLoginTime(Date lastLoginTime) {
-        this.lastLoginTime = lastLoginTime;
+    public void setDiscount(BigDecimal discount) {
+        this.discount = discount;
     }
 
-    public String getAvatar() {
-        return avatar;
+    public Integer getDiscountMember() {
+        return discountMember;
     }
 
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
+    public void setDiscountMember(Integer discountMember) {
+        this.discountMember = discountMember;
     }
 
     public Date getAddTime() {
@@ -93,6 +94,14 @@ public class LitemallAdmin {
         this.updateTime = updateTime;
     }
 
+    public Date getExpireTime() {
+        return expireTime;
+    }
+
+    public void setExpireTime(Date expireTime) {
+        this.expireTime = expireTime;
+    }
+
     public void andLogicalDeleted(boolean deleted) {
         setDeleted(deleted ? Deleted.IS_DELETED.value() : Deleted.NOT_DELETED.value());
     }
@@ -105,14 +114,6 @@ public class LitemallAdmin {
         this.deleted = deleted;
     }
 
-    public Integer[] getRoleIds() {
-        return roleIds;
-    }
-
-    public void setRoleIds(Integer[] roleIds) {
-        this.roleIds = roleIds;
-    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -122,15 +123,15 @@ public class LitemallAdmin {
         sb.append(", IS_DELETED=").append(IS_DELETED);
         sb.append(", NOT_DELETED=").append(NOT_DELETED);
         sb.append(", id=").append(id);
-        sb.append(", username=").append(username);
-        sb.append(", password=").append(password);
-        sb.append(", lastLoginIp=").append(lastLoginIp);
-        sb.append(", lastLoginTime=").append(lastLoginTime);
-        sb.append(", avatar=").append(avatar);
+        sb.append(", goodsId=").append(goodsId);
+        sb.append(", goodsName=").append(goodsName);
+        sb.append(", picUrl=").append(picUrl);
+        sb.append(", discount=").append(discount);
+        sb.append(", discountMember=").append(discountMember);
         sb.append(", addTime=").append(addTime);
         sb.append(", updateTime=").append(updateTime);
+        sb.append(", expireTime=").append(expireTime);
         sb.append(", deleted=").append(deleted);
-        sb.append(", roleIds=").append(roleIds);
         sb.append("]");
         return sb.toString();
     }
@@ -146,17 +147,17 @@ public class LitemallAdmin {
         if (getClass() != that.getClass()) {
             return false;
         }
-        LitemallAdmin other = (LitemallAdmin) that;
+        LitemallGrouponRules other = (LitemallGrouponRules) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getUsername() == null ? other.getUsername() == null : this.getUsername().equals(other.getUsername()))
-            && (this.getPassword() == null ? other.getPassword() == null : this.getPassword().equals(other.getPassword()))
-            && (this.getLastLoginIp() == null ? other.getLastLoginIp() == null : this.getLastLoginIp().equals(other.getLastLoginIp()))
-            && (this.getLastLoginTime() == null ? other.getLastLoginTime() == null : this.getLastLoginTime().equals(other.getLastLoginTime()))
-            && (this.getAvatar() == null ? other.getAvatar() == null : this.getAvatar().equals(other.getAvatar()))
+            && (this.getGoodsId() == null ? other.getGoodsId() == null : this.getGoodsId().equals(other.getGoodsId()))
+            && (this.getGoodsName() == null ? other.getGoodsName() == null : this.getGoodsName().equals(other.getGoodsName()))
+            && (this.getPicUrl() == null ? other.getPicUrl() == null : this.getPicUrl().equals(other.getPicUrl()))
+            && (this.getDiscount() == null ? other.getDiscount() == null : this.getDiscount().equals(other.getDiscount()))
+            && (this.getDiscountMember() == null ? other.getDiscountMember() == null : this.getDiscountMember().equals(other.getDiscountMember()))
             && (this.getAddTime() == null ? other.getAddTime() == null : this.getAddTime().equals(other.getAddTime()))
             && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()))
-            && (this.getDeleted() == null ? other.getDeleted() == null : this.getDeleted().equals(other.getDeleted()))
-            && (Arrays.equals(this.getRoleIds(), other.getRoleIds()));
+            && (this.getExpireTime() == null ? other.getExpireTime() == null : this.getExpireTime().equals(other.getExpireTime()))
+            && (this.getDeleted() == null ? other.getDeleted() == null : this.getDeleted().equals(other.getDeleted()));
     }
 
     @Override
@@ -164,15 +165,15 @@ public class LitemallAdmin {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getUsername() == null) ? 0 : getUsername().hashCode());
-        result = prime * result + ((getPassword() == null) ? 0 : getPassword().hashCode());
-        result = prime * result + ((getLastLoginIp() == null) ? 0 : getLastLoginIp().hashCode());
-        result = prime * result + ((getLastLoginTime() == null) ? 0 : getLastLoginTime().hashCode());
-        result = prime * result + ((getAvatar() == null) ? 0 : getAvatar().hashCode());
+        result = prime * result + ((getGoodsId() == null) ? 0 : getGoodsId().hashCode());
+        result = prime * result + ((getGoodsName() == null) ? 0 : getGoodsName().hashCode());
+        result = prime * result + ((getPicUrl() == null) ? 0 : getPicUrl().hashCode());
+        result = prime * result + ((getDiscount() == null) ? 0 : getDiscount().hashCode());
+        result = prime * result + ((getDiscountMember() == null) ? 0 : getDiscountMember().hashCode());
         result = prime * result + ((getAddTime() == null) ? 0 : getAddTime().hashCode());
         result = prime * result + ((getUpdateTime() == null) ? 0 : getUpdateTime().hashCode());
+        result = prime * result + ((getExpireTime() == null) ? 0 : getExpireTime().hashCode());
         result = prime * result + ((getDeleted() == null) ? 0 : getDeleted().hashCode());
-        result = prime * result + (Arrays.hashCode(getRoleIds()));
         return result;
     }
 
@@ -204,15 +205,15 @@ public class LitemallAdmin {
 
     public enum Column {
         id("id", "id", "INTEGER", false),
-        username("username", "username", "VARCHAR", false),
-        password("password", "password", "VARCHAR", true),
-        lastLoginIp("last_login_ip", "lastLoginIp", "VARCHAR", false),
-        lastLoginTime("last_login_time", "lastLoginTime", "TIMESTAMP", false),
-        avatar("avatar", "avatar", "VARCHAR", false),
+        goodsId("goods_id", "goodsId", "INTEGER", false),
+        goodsName("goods_name", "goodsName", "VARCHAR", false),
+        picUrl("pic_url", "picUrl", "VARCHAR", false),
+        discount("discount", "discount", "DECIMAL", false),
+        discountMember("discount_member", "discountMember", "INTEGER", false),
         addTime("add_time", "addTime", "TIMESTAMP", false),
         updateTime("update_time", "updateTime", "TIMESTAMP", false),
-        deleted("deleted", "deleted", "BIT", false),
-        roleIds("role_ids", "roleIds", "VARCHAR", false);
+        expireTime("expire_time", "expireTime", "TIMESTAMP", false),
+        deleted("deleted", "deleted", "BIT", false);
 
         private static final String BEGINNING_DELIMITER = "`";
 

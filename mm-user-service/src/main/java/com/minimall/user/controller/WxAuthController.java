@@ -34,7 +34,7 @@ import static com.minimall.common.utils.WxResponseCode.*;
  * @mail yxb_825@163.com
  */
 @RestController
-@RequestMapping("/wx/auth")
+@RequestMapping("/auth")
 @Validated
 public class WxAuthController {
     private final Log logger = LogFactory.getLog(WxAuthController.class);
@@ -50,12 +50,6 @@ public class WxAuthController {
 
    /* @Autowired
     private CouponAssignService couponAssignService;*/
-
-   @PostMapping("msg")
-   public Object sendMsg(){
-       notifyService.notifySms("15330090825","测试第一条短信");
-       return ResponseUtil.ok();
-   }
 
     /**
      * 账号登录

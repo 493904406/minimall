@@ -8,16 +8,16 @@ spring:
   application:
     name: service-zuul
 zuul:
-  prefix: /api # 设置一个公共的前缀
+  prefix: /wx # 设置一个公共的前缀
   routes:
     api-a:
-      path: /ribbon/**
+      path: /**
       serviceId: ribbon-consumer
     api-b:
-      path: /user/**
+      path: user/**
       serviceId: user-service
     api-c:
-      path: /notify/**
+      path: notify/**
       serviceId: notify-service
 
 

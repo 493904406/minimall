@@ -24,7 +24,7 @@
         <module>mm-commont-service</module>
         <module>mm-user-service</module>
         <module>mm-search-service</module>
-        <module>mm-system-service</module>
+        <module>mm-base-service</module>
         <module>mm-worker-service</module>
         <module>mm-message-service</module>
         <module>mm-common</module>
@@ -125,7 +125,7 @@
             </dependency>
             <dependency>
                 <groupId>com.minimall</groupId>
-                <artifactId>mm-search-service</artifactId>
+                <artifactId>mm-base-service</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
