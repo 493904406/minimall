@@ -22,7 +22,6 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 public class NotifyAutoConfiguration {
     private final Log logger = LogFactory.getLog(NotifyAutoConfiguration.class);
 
-    @Autowired
     private final NotifyProperties properties;
 
     public NotifyAutoConfiguration(NotifyProperties properties) {
@@ -34,9 +33,9 @@ public class NotifyAutoConfiguration {
     public JavaMailSender mailSender() {
         NotifyProperties.Mail mailConfig = properties.getMail();
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-        mailSender.setHost(mailConfig.getHost());
-        mailSender.setUsername(mailConfig.getUsername());
-        mailSender.setPassword(mailConfig.getPassword());
+        mailSender.setHost("smtp.163.com");
+        mailSender.setUsername("yxb_825@163.com");
+        mailSender.setPassword("xubin825");
         return mailSender;
     }
 
@@ -44,7 +43,7 @@ public class NotifyAutoConfiguration {
     public TencentSmsSender tencentSmsSender() {
         NotifyProperties.Sms smsConfig = properties.getSms();
         TencentSmsSender smsSender = new TencentSmsSender();
-        smsSender.setSender(new SmsSingleSender(smsConfig.getAppid(), smsConfig.getAppkey()));
+        smsSender.setSender(new SmsSingleSender(1400254596, "4d0c9dfd2b1349c1e39c060e1a6ca5e6"));
         return smsSender;
     }
 }

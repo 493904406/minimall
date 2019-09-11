@@ -11,8 +11,9 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * @date:2019/8/8
  * @mail jiangbo.ge@kuwo.cn
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.minimall.*"})
 @EnableDiscoveryClient
+@MapperScan(basePackages = {"com.minimall.*"})
 public class UserApplication{
     public static void main(String[] args) {
         SpringApplication.run(UserApplication.class, args);

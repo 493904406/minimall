@@ -25,6 +25,8 @@ spring:
       max-total: 5                                                  #最大连接数
       max-wait-millis: 200                                          #等待连接获取的最大超时时间
   mybatis:
+    configuration:
+      mapUnderscoreToCamelCase: true
     mapperLocations: classpath:mapping/*.xml  #注意：一定要对应mapper映射xml文件的所在路径
     typeAliasesPackage: com.minimall.db.domain  # 注意：对应实体类的路径
     configLocation: classpath:/mybatis-config.xml
