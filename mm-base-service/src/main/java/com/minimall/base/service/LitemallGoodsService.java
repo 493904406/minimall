@@ -91,4 +91,6 @@ public interface LitemallGoodsService {
     public boolean checkExistByName(String name);
 
     public List<LitemallGoods> queryByIds(Integer[] ids) ;
+
+    public void add(LitemallGoods goods);
 }

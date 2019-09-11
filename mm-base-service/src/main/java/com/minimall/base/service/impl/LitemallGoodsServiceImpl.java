@@ -209,7 +209,7 @@ public class LitemallGoodsServiceImpl implements LitemallGoodsService {
         goodsMapper.logicalDeleteByPrimaryKey(id);
     }
 
-
+    @Override
     public void add(LitemallGoods goods) {
         goods.setAddTime(new Date());
         goods.setUpdateTime(new Date());

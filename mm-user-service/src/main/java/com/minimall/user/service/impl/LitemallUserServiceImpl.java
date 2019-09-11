@@ -6,10 +6,12 @@ import com.minimall.user.domain.entity.LitemallUser;
 import com.minimall.user.domain.entity.LitemallUserExample;
 import com.minimall.user.domain.entity.UserVo;
 import com.minimall.user.service.LitemallUserService;
+import com.minimall.user.service.LitemallUserService1;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
 
@@ -20,8 +22,8 @@ import java.util.List;
  * @mail yxb_825@163.com
  */
 @Service
-public class LitemallUserServiceImpl implements LitemallUserService{
-    @Autowired
+public class LitemallUserServiceImpl implements LitemallUserService1 {
+    @Resource
     private LitemallUserMapper userMapper;
 
     @Override
