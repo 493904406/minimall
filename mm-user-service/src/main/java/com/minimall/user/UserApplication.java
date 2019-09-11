@@ -13,7 +13,6 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  */
 @SpringBootApplication
 @EnableDiscoveryClient
-@MapperScan(basePackages = {"com.minimall.user.dao"})
 public class UserApplication{
     public static void main(String[] args) {
         SpringApplication.run(UserApplication.class, args);
