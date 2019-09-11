@@ -1,17 +1,16 @@
 package com.minimall.admin.web;
 
 import com.minimall.admin.annotation.RequiresPermissionsDesc;
-import com.minimall.base.domain.entity.LitemallCoupon;
-import com.minimall.base.service.LitemallCouponService;
 import com.minimall.common.utils.ResponseUtil;
-import com.minimall.user.domain.entity.LitemallCouponUser;
-import com.minimall.user.service.LitemallCouponUserService;
-import com.minimall.user.util.CouponConstant;
+import com.minimall.db.domain.LitemallCoupon;
+import com.minimall.db.domain.LitemallCouponUser;
+import com.minimall.db.service.LitemallCouponService;
+import com.minimall.db.service.LitemallCouponUserService;
+import com.minimall.db.util.CouponConstant;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.annotation.Order;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;

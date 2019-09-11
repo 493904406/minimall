@@ -1,11 +1,11 @@
 package com.minimall.admin.job;
 
-import com.minimall.base.domain.entity.LitemallCoupon;
-import com.minimall.base.service.LitemallCouponService;
-import com.minimall.user.domain.entity.LitemallCouponUser;
-import com.minimall.user.service.LitemallCouponUserService;
-import com.minimall.user.util.CouponConstant;
-import com.minimall.user.util.CouponUserConstant;
+import com.minimall.db.domain.LitemallCoupon;
+import com.minimall.db.domain.LitemallCouponUser;
+import com.minimall.db.service.LitemallCouponService;
+import com.minimall.db.service.LitemallCouponUserService;
+import com.minimall.db.util.CouponConstant;
+import com.minimall.db.util.CouponUserConstant;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;

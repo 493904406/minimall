@@ -1,7 +1,7 @@
 package com.minimall.base.system;
 
-import com.minimall.base.service.LitemallSystemConfigService;
 import com.minimall.common.utils.SystemInfoPrinter;
+import com.minimall.db.service.LitemallSystemConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;

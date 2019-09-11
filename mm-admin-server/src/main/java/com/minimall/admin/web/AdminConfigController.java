@@ -1,9 +1,9 @@
 package com.minimall.admin.web;
 
 import com.minimall.admin.annotation.RequiresPermissionsDesc;
-import com.minimall.base.service.LitemallSystemConfigService;
 import com.minimall.common.utils.JacksonUtil;
 import com.minimall.common.utils.ResponseUtil;
+import com.minimall.db.service.LitemallSystemConfigService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.authz.annotation.RequiresPermissions;

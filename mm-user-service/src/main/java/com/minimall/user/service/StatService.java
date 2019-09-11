@@ -1,6 +1,7 @@
 package com.minimall.user.service;
 
-import com.minimall.user.mapper.StatMapper;
+
+import com.minimall.db.dao.StatMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

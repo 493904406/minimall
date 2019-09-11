@@ -6,10 +6,10 @@ import com.minimall.admin.util.PermissionUtil;
 import com.minimall.common.utils.IpUtil;
 import com.minimall.common.utils.JacksonUtil;
 import com.minimall.common.utils.ResponseUtil;
-import com.minimall.user.domain.entity.LitemallAdmin;
-import com.minimall.user.service.LitemallAdminService;
-import com.minimall.user.service.LitemallPermissionService;
-import com.minimall.user.service.LitemallRoleService;
+import com.minimall.db.domain.LitemallAdmin;
+import com.minimall.db.service.LitemallAdminService;
+import com.minimall.db.service.LitemallPermissionService;
+import com.minimall.db.service.LitemallRoleService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.SecurityUtils;
@@ -26,7 +26,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.time.LocalDateTime;
 import java.util.*;
 
 import static com.minimall.admin.util.AdminResponseCode.ADMIN_INVALID_ACCOUNT;

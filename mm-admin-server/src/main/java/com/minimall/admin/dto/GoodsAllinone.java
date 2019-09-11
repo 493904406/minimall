@@ -1,10 +1,10 @@
 package com.minimall.admin.dto;
 
 
-import com.minimall.base.domain.entity.LitemallGoods;
-import com.minimall.user.domain.entity.LitemallGoodsAttribute;
-import com.minimall.user.domain.entity.LitemallGoodsProduct;
-import com.minimall.user.domain.entity.LitemallGoodsSpecification;
+import com.minimall.db.domain.LitemallGoods;
+import com.minimall.db.domain.LitemallGoodsAttribute;
+import com.minimall.db.domain.LitemallGoodsProduct;
+import com.minimall.db.domain.LitemallGoodsSpecification;
 
 public class GoodsAllinone {
     LitemallGoods goods;

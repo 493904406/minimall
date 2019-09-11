@@ -1,10 +1,10 @@
 package com.minimall.admin.qcode;
 
 import cn.binarywang.wx.miniapp.api.WxMaService;
-import com.minimall.base.domain.entity.LitemallGroupon;
 import com.minimall.base.system.SystemConfig;
-import com.minimall.user.domain.entity.LitemallStorage;
-import com.minimall.user.service.LitemallStorageService;
+import com.minimall.db.domain.LitemallGroupon;
+import com.minimall.db.domain.LitemallStorage;
+import com.minimall.db.service.LitemallStorageService;
 import me.chanjar.weixin.common.error.WxErrorException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

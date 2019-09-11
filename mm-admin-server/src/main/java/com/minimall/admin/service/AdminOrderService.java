@@ -7,13 +7,13 @@ import com.github.binarywang.wxpay.service.WxPayService;
 import com.minimall.common.enums.NotifyType;
 import com.minimall.common.utils.JacksonUtil;
 import com.minimall.common.utils.ResponseUtil;
+import com.minimall.db.domain.LitemallComment;
+import com.minimall.db.domain.LitemallOrder;
+import com.minimall.db.domain.LitemallOrderGoods;
+import com.minimall.db.domain.UserVo;
+import com.minimall.db.service.*;
 import com.minimall.message.service.NotifyService;
-import com.minimall.user.domain.entity.LitemallComment;
-import com.minimall.user.domain.entity.LitemallOrder;
-import com.minimall.user.domain.entity.LitemallOrderGoods;
-import com.minimall.user.domain.entity.UserVo;
-import com.minimall.user.service.*;
-import com.minimall.user.util.OrderUtil;
+import com.minimall.db.util.OrderUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -23,7 +23,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;

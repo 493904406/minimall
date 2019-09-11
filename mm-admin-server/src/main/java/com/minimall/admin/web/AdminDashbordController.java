@@ -1,11 +1,11 @@
 package com.minimall.admin.web;
 
-import com.minimall.base.service.LitemallGoodsService;
 import com.minimall.common.utils.ResponseUtil;
-import com.minimall.user.service.LitemallGoodsProductService;
+import com.minimall.db.service.LitemallGoodsProductService;
 
-import com.minimall.user.service.LitemallOrderService;
-import com.minimall.user.service.LitemallUserService;
+import com.minimall.db.service.LitemallGoodsService;
+import com.minimall.db.service.LitemallOrderService;
+import com.minimall.db.service.LitemallUserService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;

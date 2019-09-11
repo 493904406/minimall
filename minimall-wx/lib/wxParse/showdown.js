@@ -2,9 +2,9 @@
  * author: Di (微信小程序开发工程师)
  * organization: WeAppDev(微信小程序开发论坛)(http://weappdev.com)
  *               垂直微信小程序开发交流社区
- * 
+ *
  * github地址: https://github.com/icindy/wxParse
- * 
+ *
  * for: 微信小程序富文本解析
  * detail : http://weappdev.com/t/wxparse-alpha0-1-html-markdown/184
  */
@@ -1568,7 +1568,7 @@ showdown.subParser('encodeCode', function (text) {
  *  Input: an email address, e.g. "foo@example.com"
  *
  *  Output: the email address as a mailto link, with each character
- *    of the address encoded as either a decimal or hex entity, in
+ *    of the address encoded as either a decimal or hex domain, in
  *    the hopes of foiling most address harvesting spam bots. E.g.:
  *
  *    <a href="&#x6D;&#97;&#105;&#108;&#x74;&#111;:&#102;&#111;&#111;&#64;&#101;

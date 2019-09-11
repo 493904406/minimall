@@ -2,13 +2,12 @@ package com.minimall.admin.web;
 
 import com.minimall.admin.annotation.RequiresPermissionsDesc;
 import com.minimall.common.utils.ResponseUtil;
-import com.minimall.user.domain.entity.LitemallComment;
-import com.minimall.user.service.LitemallCommentService;
+import com.minimall.db.domain.LitemallComment;
+import com.minimall.db.service.LitemallCommentService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.annotation.Order;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 

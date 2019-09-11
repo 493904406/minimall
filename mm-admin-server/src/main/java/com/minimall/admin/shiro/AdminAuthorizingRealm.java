@@ -1,10 +1,10 @@
 package com.minimall.admin.shiro;
 
 
-import com.minimall.user.domain.entity.LitemallAdmin;
-import com.minimall.user.service.LitemallAdminService;
-import com.minimall.user.service.LitemallPermissionService;
-import com.minimall.user.service.LitemallRoleService;
+import com.minimall.db.domain.LitemallAdmin;
+import com.minimall.db.service.LitemallAdminService;
+import com.minimall.db.service.LitemallPermissionService;
+import com.minimall.db.service.LitemallRoleService;
 import org.apache.shiro.authc.*;
 
 import org.apache.shiro.authz.AuthorizationException;

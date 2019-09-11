@@ -1,12 +1,12 @@
 package com.minimall.admin.job;
 
 import com.minimall.base.system.SystemConfig;
-import com.minimall.user.domain.entity.LitemallOrder;
-import com.minimall.user.domain.entity.LitemallOrderGoods;
-import com.minimall.user.service.LitemallGoodsProductService;
-import com.minimall.user.service.LitemallOrderGoodsService;
-import com.minimall.user.service.LitemallOrderService;
-import com.minimall.user.util.OrderUtil;
+import com.minimall.db.domain.LitemallOrder;
+import com.minimall.db.domain.LitemallOrderGoods;
+import com.minimall.db.service.LitemallGoodsProductService;
+import com.minimall.db.service.LitemallOrderGoodsService;
+import com.minimall.db.service.LitemallOrderService;
+import com.minimall.db.util.OrderUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -15,7 +15,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 

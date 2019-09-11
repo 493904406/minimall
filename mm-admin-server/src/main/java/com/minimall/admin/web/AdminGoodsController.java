@@ -5,7 +5,7 @@ import com.minimall.admin.dto.GoodsAllinone;
 import com.minimall.admin.service.AdminGoodsService;
 import com.minimall.admin.validator.Order;
 import com.minimall.admin.validator.Sort;
-import com.minimall.base.domain.entity.LitemallGoods;
+import com.minimall.db.domain.LitemallGoods;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.authz.annotation.RequiresPermissions;

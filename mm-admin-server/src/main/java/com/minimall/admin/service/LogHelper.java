@@ -1,9 +1,9 @@
 package com.minimall.admin.service;
 
 import com.minimall.common.utils.IpUtil;
-import com.minimall.user.domain.entity.LitemallAdmin;
-import com.minimall.user.domain.entity.LitemallLog;
-import com.minimall.user.service.LitemallLogService;
+import com.minimall.db.domain.LitemallAdmin;
+import com.minimall.db.domain.LitemallLog;
+import com.minimall.db.service.LitemallLogService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 

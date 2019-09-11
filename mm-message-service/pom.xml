@@ -16,30 +16,12 @@
             <groupId>com.minimall</groupId>
             <artifactId>mm-common</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.minimall</groupId>
+            <artifactId>mm-db</artifactId>
+        </dependency>
 
-        <!--mysql-->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
-        <!--mybatis-->
-        <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.mybatis.generator</groupId>
-            <artifactId>mybatis-generator-core</artifactId>
-        </dependency>
-        <!--分页插件-->
-        <dependency>
-            <groupId>com.github.pagehelper</groupId>
-            <artifactId>pagehelper-spring-boot-starter</artifactId>
-        </dependency>
+
         <!--mail-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -122,7 +104,7 @@
         <resources>
             <!-- maven项目中src源代码下的xml等资源文件编译进classes文件夹，
               注意：如果没有这个，它会自动搜索resources下是否有mapper.xml文件，
-              如果没有就会报org.apache.ibatis.binding.BindingException: Invalid bound statement (not found): com.pet.mapper.PetMapper.selectByPrimaryKey-->
+              如果没有就会报org.apache.ibatis.binding.BindingException: Invalid bound statement (not found): com.pet.dao.PetMapper.selectByPrimaryKey-->
             <resource>
                 <directory>src/main/java</directory>
                 <includes>

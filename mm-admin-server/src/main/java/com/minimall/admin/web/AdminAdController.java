@@ -1,9 +1,9 @@
 package com.minimall.admin.web;
 
 import com.minimall.admin.annotation.RequiresPermissionsDesc;
-import com.minimall.base.domain.entity.LitemallAd;
-import com.minimall.base.service.LitemallAdService;
 import com.minimall.common.utils.ResponseUtil;
+import com.minimall.db.domain.LitemallAd;
+import com.minimall.db.service.LitemallAdService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

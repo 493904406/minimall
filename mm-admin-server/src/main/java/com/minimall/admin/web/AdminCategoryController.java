@@ -2,9 +2,9 @@ package com.minimall.admin.web;
 
 import com.minimall.admin.annotation.RequiresPermissionsDesc;
 import com.minimall.admin.vo.CategoryVo;
-import com.minimall.base.domain.entity.LitemallCategory;
-import com.minimall.base.service.LitemallCategoryService;
 import com.minimall.common.utils.ResponseUtil;
+import com.minimall.db.domain.LitemallCategory;
+import com.minimall.db.service.LitemallCategoryService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.authz.annotation.RequiresPermissions;

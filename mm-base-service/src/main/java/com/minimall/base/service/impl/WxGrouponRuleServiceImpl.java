@@ -2,12 +2,12 @@ package com.minimall.base.service.impl;
 
 import com.github.pagehelper.Page;
 import com.minimall.base.domain.dto.GrouponRuleVo;
-import com.minimall.base.domain.entity.LitemallGoods;
-import com.minimall.base.domain.entity.LitemallGrouponRules;
-import com.minimall.base.service.LitemallGoodsService;
-import com.minimall.base.service.LitemallGrouponRulesService;
-import com.minimall.base.service.LitemallGrouponService;
 import com.minimall.base.service.WxGrouponRuleService;
+import com.minimall.db.domain.LitemallGoods;
+import com.minimall.db.domain.LitemallGrouponRules;
+import com.minimall.db.service.LitemallGoodsService;
+import com.minimall.db.service.LitemallGrouponRulesService;
+import com.minimall.db.service.LitemallGrouponService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;

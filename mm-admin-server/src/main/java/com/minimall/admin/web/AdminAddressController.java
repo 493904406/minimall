@@ -2,14 +2,13 @@ package com.minimall.admin.web;
 
 import com.minimall.admin.annotation.RequiresPermissionsDesc;
 import com.minimall.common.utils.ResponseUtil;
-import com.minimall.user.domain.entity.LitemallAddress;
-import com.minimall.user.service.LitemallAddressService;
-import com.minimall.user.service.LitemallRegionService;
+import com.minimall.db.domain.LitemallAddress;
+import com.minimall.db.service.LitemallAddressService;
+import com.minimall.db.service.LitemallRegionService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.annotation.Order;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

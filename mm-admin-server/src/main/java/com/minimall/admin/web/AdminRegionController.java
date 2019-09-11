@@ -2,8 +2,8 @@ package com.minimall.admin.web;
 
 import com.minimall.admin.vo.RegionVo;
 import com.minimall.common.utils.ResponseUtil;
-import com.minimall.user.domain.entity.LitemallRegion;
-import com.minimall.user.service.LitemallRegionService;
+import com.minimall.db.domain.LitemallRegion;
+import com.minimall.db.service.LitemallRegionService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;

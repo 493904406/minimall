@@ -1,12 +1,13 @@
 package com.minimall.base.controller;
 
 import com.minimall.base.annotation.LoginUser;
-import com.minimall.base.domain.entity.LitemallCategory;
-import com.minimall.base.domain.entity.LitemallGoods;
 import com.minimall.base.service.*;
 import com.minimall.base.service.cache.HomeCacheManager;
 import com.minimall.base.system.SystemConfig;
 import com.minimall.common.utils.ResponseUtil;
+import com.minimall.db.domain.LitemallCategory;
+import com.minimall.db.domain.LitemallGoods;
+import com.minimall.db.service.*;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
