@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.minimall.db.dao.LitemallCommentMapper">
-  <resultMap id="BaseResultMap" type="com.minimall.user.domain.entity.LitemallComment">
+<mapper namespace="com.minimall.db.dao.LitemallAddressMapper">
+  <resultMap id="BaseResultMap" type="com.minimall.db.domain.LitemallAddress">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="value_id" jdbcType="INTEGER" property="valueId" />
-    <result column="type" jdbcType="TINYINT" property="type" />
-    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="has_picture" jdbcType="BIT" property="hasPicture" />
-    <result column="pic_urls" jdbcType="VARCHAR" property="picUrls" typeHandler="com.minimall.db.mybatis.JsonStringArrayTypeHandler" />
-    <result column="star" jdbcType="SMALLINT" property="star" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="county" jdbcType="VARCHAR" property="county" />
+    <result column="address_detail" jdbcType="VARCHAR" property="addressDetail" />
+    <result column="area_code" jdbcType="CHAR" property="areaCode" />
+    <result column="postal_code" jdbcType="CHAR" property="postalCode" />
+    <result column="tel" jdbcType="VARCHAR" property="tel" />
+    <result column="is_default" jdbcType="BIT" property="isDefault" />
     <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="deleted" jdbcType="BIT" property="deleted" />
@@ -34,25 +37,6 @@
                   and ${criterion.condition}
                   <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-            <foreach collection="criteria.picUrlsCriteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.minimall.common.mybatis.JsonStringArrayTypeHandler}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.minimall.common.mybatis.JsonStringArrayTypeHandler} and #{criterion.secondValue,typeHandler=com.minimall.common.mybatis.JsonStringArrayTypeHandler}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem,typeHandler=com.minimall.common.mybatis.JsonStringArrayTypeHandler}
                   </foreach>
                 </when>
               </choose>
@@ -86,41 +70,22 @@
                 </when>
               </choose>
             </foreach>
-            <foreach collection="criteria.picUrlsCriteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.minimall.common.mybatis.JsonStringArrayTypeHandler}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.minimall.common.mybatis.JsonStringArrayTypeHandler} and #{criterion.secondValue,typeHandler=com.minimall.common.mybatis.JsonStringArrayTypeHandler}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem,typeHandler=com.minimall.common.mybatis.JsonStringArrayTypeHandler}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
           </trim>
         </if>
       </foreach>
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, value_id, `type`, content, user_id, has_picture, pic_urls, star, add_time, update_time,
-    deleted
+    id, `name`, user_id, province, city, county, address_detail, area_code, postal_code,
+    tel, is_default, add_time, update_time, deleted
   </sql>
-  <select id="selectByExample" parameterType="com.minimall.user.domain.entity.LitemallCommentExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.minimall.db.domain.LitemallAddressExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from litemall_comment
+    from litemall_address
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -143,7 +108,7 @@
         <include refid="Base_Column_List" />
       </otherwise>
     </choose>
-    from litemall_comment
+    from litemall_address
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -154,13 +119,13 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
-    from litemall_comment
+    from litemall_address
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectByPrimaryKeyWithLogicalDelete" parameterType="map" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
-    from litemall_comment
+    from litemall_address
     where id = #{id,jdbcType=INTEGER}
       and deleted =
     <choose>
@@ -184,58 +149,69 @@
         <include refid="Base_Column_List" />
       </otherwise>
     </choose>
-    from litemall_comment
+    from litemall_address
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from litemall_comment
+    delete from litemall_address
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.minimall.user.domain.entity.LitemallCommentExample">
-    delete from litemall_comment
+  <delete id="deleteByExample" parameterType="com.minimall.db.domain.LitemallAddressExample">
+    delete from litemall_address
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.minimall.user.domain.entity.LitemallComment">
+  <insert id="insert" parameterType="com.minimall.db.domain.LitemallAddress">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into litemall_comment (value_id, `type`, content,
-      user_id, has_picture, pic_urls,
-      star, add_time, update_time,
+    insert into litemall_address (`name`, user_id, province,
+      city, county, address_detail,
+      area_code, postal_code, tel,
+      is_default, add_time, update_time,
       deleted)
-    values (#{valueId,jdbcType=INTEGER}, #{type,jdbcType=TINYINT}, #{content,jdbcType=VARCHAR},
-      #{userId,jdbcType=INTEGER}, #{hasPicture,jdbcType=BIT}, #{picUrls,jdbcType=VARCHAR,typeHandler=com.minimall.db.mybatis.JsonStringArrayTypeHandler},
-      #{star,jdbcType=SMALLINT}, #{addTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP},
+    values (#{name,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, #{province,jdbcType=VARCHAR},
+      #{city,jdbcType=VARCHAR}, #{county,jdbcType=VARCHAR}, #{addressDetail,jdbcType=VARCHAR},
+      #{areaCode,jdbcType=CHAR}, #{postalCode,jdbcType=CHAR}, #{tel,jdbcType=VARCHAR},
+      #{isDefault,jdbcType=BIT}, #{addTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP},
       #{deleted,jdbcType=BIT})
   </insert>
-  <insert id="insertSelective" parameterType="com.minimall.user.domain.entity.LitemallComment">
+  <insert id="insertSelective" parameterType="com.minimall.db.domain.LitemallAddress">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into litemall_comment
+    insert into litemall_address
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="valueId != null">
-        value_id,
-      </if>
-      <if test="type != null">
-        `type`,
-      </if>
-      <if test="content != null">
-        content,
+      <if test="name != null">
+        `name`,
       </if>
       <if test="userId != null">
         user_id,
       </if>
-      <if test="hasPicture != null">
-        has_picture,
+      <if test="province != null">
+        province,
       </if>
-      <if test="picUrls != null">
-        pic_urls,
+      <if test="city != null">
+        city,
       </if>
-      <if test="star != null">
-        star,
+      <if test="county != null">
+        county,
+      </if>
+      <if test="addressDetail != null">
+        address_detail,
+      </if>
+      <if test="areaCode != null">
+        area_code,
+      </if>
+      <if test="postalCode != null">
+        postal_code,
+      </if>
+      <if test="tel != null">
+        tel,
+      </if>
+      <if test="isDefault != null">
+        is_default,
       </if>
       <if test="addTime != null">
         add_time,
@@ -248,26 +224,35 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="valueId != null">
-        #{valueId,jdbcType=INTEGER},
-      </if>
-      <if test="type != null">
-        #{type,jdbcType=TINYINT},
-      </if>
-      <if test="content != null">
-        #{content,jdbcType=VARCHAR},
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
       </if>
       <if test="userId != null">
         #{userId,jdbcType=INTEGER},
       </if>
-      <if test="hasPicture != null">
-        #{hasPicture,jdbcType=BIT},
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
       </if>
-      <if test="picUrls != null">
-        #{picUrls,jdbcType=VARCHAR,typeHandler=com.minimall.common.mybatis.JsonStringArrayTypeHandler},
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
       </if>
-      <if test="star != null">
-        #{star,jdbcType=SMALLINT},
+      <if test="county != null">
+        #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="addressDetail != null">
+        #{addressDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="areaCode != null">
+        #{areaCode,jdbcType=CHAR},
+      </if>
+      <if test="postalCode != null">
+        #{postalCode,jdbcType=CHAR},
+      </if>
+      <if test="tel != null">
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="isDefault != null">
+        #{isDefault,jdbcType=BIT},
       </if>
       <if test="addTime != null">
         #{addTime,jdbcType=TIMESTAMP},
@@ -280,38 +265,47 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.minimall.user.domain.entity.LitemallCommentExample" resultType="java.lang.Long">
-    select count(*) from litemall_comment
+  <select id="countByExample" parameterType="com.minimall.db.domain.LitemallAddressExample" resultType="java.lang.Long">
+    select count(*) from litemall_address
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update litemall_comment
+    update litemall_address
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.valueId != null">
-        value_id = #{record.valueId,jdbcType=INTEGER},
-      </if>
-      <if test="record.type != null">
-        `type` = #{record.type,jdbcType=TINYINT},
-      </if>
-      <if test="record.content != null">
-        content = #{record.content,jdbcType=VARCHAR},
+      <if test="record.name != null">
+        `name` = #{record.name,jdbcType=VARCHAR},
       </if>
       <if test="record.userId != null">
         user_id = #{record.userId,jdbcType=INTEGER},
       </if>
-      <if test="record.hasPicture != null">
-        has_picture = #{record.hasPicture,jdbcType=BIT},
+      <if test="record.province != null">
+        province = #{record.province,jdbcType=VARCHAR},
       </if>
-      <if test="record.picUrls != null">
-        pic_urls = #{record.picUrls,jdbcType=VARCHAR,typeHandler=com.minimall.common.mybatis.JsonStringArrayTypeHandler},
+      <if test="record.city != null">
+        city = #{record.city,jdbcType=VARCHAR},
       </if>
-      <if test="record.star != null">
-        star = #{record.star,jdbcType=SMALLINT},
+      <if test="record.county != null">
+        county = #{record.county,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addressDetail != null">
+        address_detail = #{record.addressDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.areaCode != null">
+        area_code = #{record.areaCode,jdbcType=CHAR},
+      </if>
+      <if test="record.postalCode != null">
+        postal_code = #{record.postalCode,jdbcType=CHAR},
+      </if>
+      <if test="record.tel != null">
+        tel = #{record.tel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isDefault != null">
+        is_default = #{record.isDefault,jdbcType=BIT},
       </if>
       <if test="record.addTime != null">
         add_time = #{record.addTime,jdbcType=TIMESTAMP},
@@ -328,15 +322,18 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update litemall_comment
+    update litemall_address
     set id = #{record.id,jdbcType=INTEGER},
-      value_id = #{record.valueId,jdbcType=INTEGER},
-      `type` = #{record.type,jdbcType=TINYINT},
-      content = #{record.content,jdbcType=VARCHAR},
+      `name` = #{record.name,jdbcType=VARCHAR},
       user_id = #{record.userId,jdbcType=INTEGER},
-      has_picture = #{record.hasPicture,jdbcType=BIT},
-      pic_urls = #{record.picUrls,jdbcType=VARCHAR,typeHandler=com.minimall.db.mybatis.JsonStringArrayTypeHandler},
-      star = #{record.star,jdbcType=SMALLINT},
+      province = #{record.province,jdbcType=VARCHAR},
+      city = #{record.city,jdbcType=VARCHAR},
+      county = #{record.county,jdbcType=VARCHAR},
+      address_detail = #{record.addressDetail,jdbcType=VARCHAR},
+      area_code = #{record.areaCode,jdbcType=CHAR},
+      postal_code = #{record.postalCode,jdbcType=CHAR},
+      tel = #{record.tel,jdbcType=VARCHAR},
+      is_default = #{record.isDefault,jdbcType=BIT},
       add_time = #{record.addTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       deleted = #{record.deleted,jdbcType=BIT}
@@ -344,29 +341,38 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.minimall.user.domain.entity.LitemallComment">
-    update litemall_comment
+  <update id="updateByPrimaryKeySelective" parameterType="com.minimall.db.domain.LitemallAddress">
+    update litemall_address
     <set>
-      <if test="valueId != null">
-        value_id = #{valueId,jdbcType=INTEGER},
-      </if>
-      <if test="type != null">
-        `type` = #{type,jdbcType=TINYINT},
-      </if>
-      <if test="content != null">
-        content = #{content,jdbcType=VARCHAR},
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
       </if>
       <if test="userId != null">
         user_id = #{userId,jdbcType=INTEGER},
       </if>
-      <if test="hasPicture != null">
-        has_picture = #{hasPicture,jdbcType=BIT},
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
       </if>
-      <if test="picUrls != null">
-        pic_urls = #{picUrls,jdbcType=VARCHAR,typeHandler=com.minimall.common.mybatis.JsonStringArrayTypeHandler},
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
       </if>
-      <if test="star != null">
-        star = #{star,jdbcType=SMALLINT},
+      <if test="county != null">
+        county = #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="addressDetail != null">
+        address_detail = #{addressDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="areaCode != null">
+        area_code = #{areaCode,jdbcType=CHAR},
+      </if>
+      <if test="postalCode != null">
+        postal_code = #{postalCode,jdbcType=CHAR},
+      </if>
+      <if test="tel != null">
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="isDefault != null">
+        is_default = #{isDefault,jdbcType=BIT},
       </if>
       <if test="addTime != null">
         add_time = #{addTime,jdbcType=TIMESTAMP},
@@ -380,24 +386,27 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.minimall.user.domain.entity.LitemallComment">
-    update litemall_comment
-    set value_id = #{valueId,jdbcType=INTEGER},
-      `type` = #{type,jdbcType=TINYINT},
-      content = #{content,jdbcType=VARCHAR},
+  <update id="updateByPrimaryKey" parameterType="com.minimall.db.domain.LitemallAddress">
+    update litemall_address
+    set `name` = #{name,jdbcType=VARCHAR},
       user_id = #{userId,jdbcType=INTEGER},
-      has_picture = #{hasPicture,jdbcType=BIT},
-      pic_urls = #{picUrls,jdbcType=VARCHAR,typeHandler=com.minimall.common.mybatis.JsonStringArrayTypeHandler},
-      star = #{star,jdbcType=SMALLINT},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      county = #{county,jdbcType=VARCHAR},
+      address_detail = #{addressDetail,jdbcType=VARCHAR},
+      area_code = #{areaCode,jdbcType=CHAR},
+      postal_code = #{postalCode,jdbcType=CHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      is_default = #{isDefault,jdbcType=BIT},
       add_time = #{addTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       deleted = #{deleted,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectOneByExample" parameterType="com.minimall.user.domain.entity.LitemallCommentExample" resultMap="BaseResultMap">
+  <select id="selectOneByExample" parameterType="com.minimall.db.domain.LitemallAddressExample" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
-    from litemall_comment
+    from litemall_address
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -418,7 +427,7 @@
         <include refid="Base_Column_List" />
       </otherwise>
     </choose>
-    from litemall_comment
+    from litemall_address
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -428,14 +437,13 @@
     limit 1
   </select>
   <update id="logicalDeleteByExample" parameterType="map">
-    update litemall_comment set deleted = 1
+    update litemall_address set deleted = 1
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="logicalDeleteByPrimaryKey" parameterType="java.lang.Integer">
-    update litemall_comment set deleted = 1
+    update litemall_address set deleted = 1
     where id = #{id,jdbcType=INTEGER}
   </update>
-
 </mapper>

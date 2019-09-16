@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.minimall.db.dao.LitemallTopicMapper">
-  <resultMap id="BaseResultMap" type="com.minimall.db.domain.LitemallTopic">
+<mapper namespace="com.minimall.db.dao.LitemallOrderGoodsMapper">
+  <resultMap id="BaseResultMap" type="com.minimall.db.domain.LitemallOrderGoods">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="title" jdbcType="VARCHAR" property="title" />
-    <result column="subtitle" jdbcType="VARCHAR" property="subtitle" />
+    <result column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="goods_id" jdbcType="INTEGER" property="goodsId" />
+    <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
+    <result column="goods_sn" jdbcType="VARCHAR" property="goodsSn" />
+    <result column="product_id" jdbcType="INTEGER" property="productId" />
+    <result column="number" jdbcType="SMALLINT" property="number" />
     <result column="price" jdbcType="DECIMAL" property="price" />
-    <result column="read_count" jdbcType="VARCHAR" property="readCount" />
+    <result column="specifications" jdbcType="VARCHAR" property="specifications" typeHandler="com.minimall.db.mybatis.JsonStringArrayTypeHandler" />
     <result column="pic_url" jdbcType="VARCHAR" property="picUrl" />
-    <result column="sort_order" jdbcType="INTEGER" property="sortOrder" />
-    <result column="goods" jdbcType="VARCHAR" property="goods" typeHandler="com.minimall.db.mybatis.JsonIntegerArrayTypeHandler" />
+    <result column="comment" jdbcType="INTEGER" property="comment" />
     <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="deleted" jdbcType="BIT" property="deleted" />
-  </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.minimall.db.domain.LitemallTopic">
-    <result column="content" jdbcType="LONGVARCHAR" property="content" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -41,21 +41,21 @@
                 </when>
               </choose>
             </foreach>
-            <foreach collection="criteria.goodsCriteria" item="criterion">
+            <foreach collection="criteria.specificationsCriteria" item="criterion">
               <choose>
                 <when test="criterion.noValue">
                   and ${criterion.condition}
                 </when>
                 <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.minimall.common.mybatis.JsonIntegerArrayTypeHandler}
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.minimall.db.mybatis.JsonStringArrayTypeHandler}
                 </when>
                 <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.minimall.common.mybatis.JsonIntegerArrayTypeHandler} and #{criterion.secondValue,typeHandler=com.minimall.common.mybatis.JsonIntegerArrayTypeHandler}
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.minimall.db.mybatis.JsonStringArrayTypeHandler} and #{criterion.secondValue,typeHandler=com.minimall.db.mybatis.JsonStringArrayTypeHandler}
                 </when>
                 <when test="criterion.listValue">
                   and ${criterion.condition}
                   <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem,typeHandler=com.minimall.common.mybatis.JsonIntegerArrayTypeHandler}
+                    #{listItem,typeHandler=com.minimall.db.mybatis.JsonStringArrayTypeHandler}
                   </foreach>
                 </when>
               </choose>
@@ -89,21 +89,21 @@
                 </when>
               </choose>
             </foreach>
-            <foreach collection="criteria.goodsCriteria" item="criterion">
+            <foreach collection="criteria.specificationsCriteria" item="criterion">
               <choose>
                 <when test="criterion.noValue">
                   and ${criterion.condition}
                 </when>
                 <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.minimall.common.mybatis.JsonIntegerArrayTypeHandler}
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.minimall.db.mybatis.JsonStringArrayTypeHandler}
                 </when>
                 <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.minimall.common.mybatis.JsonIntegerArrayTypeHandler} and #{criterion.secondValue,typeHandler=com.minimall.common.mybatis.JsonIntegerArrayTypeHandler}
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.minimall.db.mybatis.JsonStringArrayTypeHandler} and #{criterion.secondValue,typeHandler=com.minimall.db.mybatis.JsonStringArrayTypeHandler}
                 </when>
                 <when test="criterion.listValue">
                   and ${criterion.condition}
                   <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem,typeHandler=com.minimall.common.mybatis.JsonIntegerArrayTypeHandler}
+                    #{listItem,typeHandler=com.minimall.db.mybatis.JsonStringArrayTypeHandler}
                   </foreach>
                 </when>
               </choose>
@@ -114,21 +114,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, title, subtitle, price, read_count, pic_url, sort_order, goods, add_time, update_time,
-    deleted
+    id, order_id, goods_id, goods_name, goods_sn, product_id, `number`, price, specifications,
+    pic_url, `comment`, add_time, update_time, deleted
   </sql>
-  <sql id="Blob_Column_List">
-    content
-  </sql>
-  <select id="selectByExampleWithBLOBs" parameterType="com.minimall.db.domain.LitemallTopicExample" resultMap="ResultMapWithBLOBs">
+  <select id="selectByExample" parameterType="com.minimall.db.domain.LitemallOrderGoodsExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from litemall_topic
+    from litemall_order_goods
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -136,21 +131,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByExample" parameterType="com.minimall.db.domain.LitemallTopicExample" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from litemall_topic
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByExampleSelective" parameterType="map" resultMap="ResultMapWithBLOBs">
+  <select id="selectByExampleSelective" parameterType="map" resultMap="BaseResultMap">
     select
     <if test="example.distinct">
       distinct
@@ -163,11 +144,9 @@
       </when>
       <otherwise>
         <include refid="Base_Column_List" />
-        ,
-        <include refid="Blob_Column_List" />
       </otherwise>
     </choose>
-    from litemall_topic
+    from litemall_order_goods
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -175,20 +154,16 @@
       order by ${example.orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from litemall_topic
+    from litemall_order_goods
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <select id="selectByPrimaryKeyWithLogicalDelete" parameterType="map" resultMap="ResultMapWithBLOBs">
+  <select id="selectByPrimaryKeyWithLogicalDelete" parameterType="map" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from litemall_topic
+    from litemall_order_goods
     where id = #{id,jdbcType=INTEGER}
       and deleted =
     <choose>
@@ -200,7 +175,7 @@
       </otherwise>
     </choose>
   </select>
-  <select id="selectByPrimaryKeySelective" parameterType="map" resultMap="ResultMapWithBLOBs">
+  <select id="selectByPrimaryKeySelective" parameterType="map" resultMap="BaseResultMap">
     select
     <choose>
       <when test="selective != null and selective.length &gt; 0">
@@ -210,64 +185,71 @@
       </when>
       <otherwise>
         <include refid="Base_Column_List" />
-        ,
-        <include refid="Blob_Column_List" />
       </otherwise>
     </choose>
-    from litemall_topic
+    from litemall_order_goods
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from litemall_topic
+    delete from litemall_order_goods
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.minimall.db.domain.LitemallTopicExample">
-    delete from litemall_topic
+  <delete id="deleteByExample" parameterType="com.minimall.db.domain.LitemallOrderGoodsExample">
+    delete from litemall_order_goods
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.minimall.db.domain.LitemallTopic">
+  <insert id="insert" parameterType="com.minimall.db.domain.LitemallOrderGoods">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into litemall_topic (title, subtitle, price,
-      read_count, pic_url, sort_order,
-      goods,
-      add_time, update_time, deleted,
-      content)
-    values (#{title,jdbcType=VARCHAR}, #{subtitle,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL},
-      #{readCount,jdbcType=VARCHAR}, #{picUrl,jdbcType=VARCHAR}, #{sortOrder,jdbcType=INTEGER},
-      #{goods,jdbcType=VARCHAR,typeHandler=com.minimall.db.mybatis.JsonIntegerArrayTypeHandler},
-      #{addTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{deleted,jdbcType=BIT},
-      #{content,jdbcType=LONGVARCHAR})
+    insert into litemall_order_goods (order_id, goods_id, goods_name,
+      goods_sn, product_id, `number`,
+      price, specifications,
+      pic_url, `comment`, add_time,
+      update_time, deleted)
+    values (#{orderId,jdbcType=INTEGER}, #{goodsId,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR},
+      #{goodsSn,jdbcType=VARCHAR}, #{productId,jdbcType=INTEGER}, #{number,jdbcType=SMALLINT},
+      #{price,jdbcType=DECIMAL}, #{specifications,jdbcType=VARCHAR,typeHandler=com.minimall.db.mybatis.JsonStringArrayTypeHandler},
+      #{picUrl,jdbcType=VARCHAR}, #{comment,jdbcType=INTEGER}, #{addTime,jdbcType=TIMESTAMP},
+      #{updateTime,jdbcType=TIMESTAMP}, #{deleted,jdbcType=BIT})
   </insert>
-  <insert id="insertSelective" parameterType="com.minimall.db.domain.LitemallTopic">
+  <insert id="insertSelective" parameterType="com.minimall.db.domain.LitemallOrderGoods">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into litemall_topic
+    insert into litemall_order_goods
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="title != null">
-        title,
+      <if test="orderId != null">
+        order_id,
       </if>
-      <if test="subtitle != null">
-        subtitle,
+      <if test="goodsId != null">
+        goods_id,
+      </if>
+      <if test="goodsName != null">
+        goods_name,
+      </if>
+      <if test="goodsSn != null">
+        goods_sn,
+      </if>
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="number != null">
+        `number`,
       </if>
       <if test="price != null">
         price,
       </if>
-      <if test="readCount != null">
-        read_count,
+      <if test="specifications != null">
+        specifications,
       </if>
       <if test="picUrl != null">
         pic_url,
       </if>
-      <if test="sortOrder != null">
-        sort_order,
-      </if>
-      <if test="goods != null">
-        goods,
+      <if test="comment != null">
+        `comment`,
       </if>
       <if test="addTime != null">
         add_time,
@@ -278,31 +260,37 @@
       <if test="deleted != null">
         deleted,
       </if>
-      <if test="content != null">
-        content,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="title != null">
-        #{title,jdbcType=VARCHAR},
+      <if test="orderId != null">
+        #{orderId,jdbcType=INTEGER},
       </if>
-      <if test="subtitle != null">
-        #{subtitle,jdbcType=VARCHAR},
+      <if test="goodsId != null">
+        #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsName != null">
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsSn != null">
+        #{goodsSn,jdbcType=VARCHAR},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=SMALLINT},
       </if>
       <if test="price != null">
         #{price,jdbcType=DECIMAL},
       </if>
-      <if test="readCount != null">
-        #{readCount,jdbcType=VARCHAR},
+      <if test="specifications != null">
+        #{specifications,jdbcType=VARCHAR,typeHandler=com.minimall.db.mybatis.JsonStringArrayTypeHandler},
       </if>
       <if test="picUrl != null">
         #{picUrl,jdbcType=VARCHAR},
       </if>
-      <if test="sortOrder != null">
-        #{sortOrder,jdbcType=INTEGER},
-      </if>
-      <if test="goods != null">
-        #{goods,jdbcType=VARCHAR,typeHandler=com.minimall.common.mybatis.JsonIntegerArrayTypeHandler},
+      <if test="comment != null">
+        #{comment,jdbcType=INTEGER},
       </if>
       <if test="addTime != null">
         #{addTime,jdbcType=TIMESTAMP},
@@ -313,43 +301,49 @@
       <if test="deleted != null">
         #{deleted,jdbcType=BIT},
       </if>
-      <if test="content != null">
-        #{content,jdbcType=LONGVARCHAR},
-      </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.minimall.db.domain.LitemallTopicExample" resultType="java.lang.Long">
-    select count(*) from litemall_topic
+  <select id="countByExample" parameterType="com.minimall.db.domain.LitemallOrderGoodsExample" resultType="java.lang.Long">
+    select count(*) from litemall_order_goods
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update litemall_topic
+    update litemall_order_goods
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.title != null">
-        title = #{record.title,jdbcType=VARCHAR},
+      <if test="record.orderId != null">
+        order_id = #{record.orderId,jdbcType=INTEGER},
       </if>
-      <if test="record.subtitle != null">
-        subtitle = #{record.subtitle,jdbcType=VARCHAR},
+      <if test="record.goodsId != null">
+        goods_id = #{record.goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="record.goodsName != null">
+        goods_name = #{record.goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsSn != null">
+        goods_sn = #{record.goodsSn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productId != null">
+        product_id = #{record.productId,jdbcType=INTEGER},
+      </if>
+      <if test="record.number != null">
+        `number` = #{record.number,jdbcType=SMALLINT},
       </if>
       <if test="record.price != null">
         price = #{record.price,jdbcType=DECIMAL},
       </if>
-      <if test="record.readCount != null">
-        read_count = #{record.readCount,jdbcType=VARCHAR},
+      <if test="record.specifications != null">
+        specifications = #{record.specifications,jdbcType=VARCHAR,typeHandler=com.minimall.db.mybatis.JsonStringArrayTypeHandler},
       </if>
       <if test="record.picUrl != null">
         pic_url = #{record.picUrl,jdbcType=VARCHAR},
       </if>
-      <if test="record.sortOrder != null">
-        sort_order = #{record.sortOrder,jdbcType=INTEGER},
-      </if>
-      <if test="record.goods != null">
-        goods = #{record.goods,jdbcType=VARCHAR,typeHandler=com.minimall.common.mybatis.JsonIntegerArrayTypeHandler},
+      <if test="record.comment != null">
+        `comment` = #{record.comment,jdbcType=INTEGER},
       </if>
       <if test="record.addTime != null">
         add_time = #{record.addTime,jdbcType=TIMESTAMP},
@@ -360,42 +354,24 @@
       <if test="record.deleted != null">
         deleted = #{record.deleted,jdbcType=BIT},
       </if>
-      <if test="record.content != null">
-        content = #{record.content,jdbcType=LONGVARCHAR},
-      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExampleWithBLOBs" parameterType="map">
-    update litemall_topic
-    set id = #{record.id,jdbcType=INTEGER},
-      title = #{record.title,jdbcType=VARCHAR},
-      subtitle = #{record.subtitle,jdbcType=VARCHAR},
-      price = #{record.price,jdbcType=DECIMAL},
-      read_count = #{record.readCount,jdbcType=VARCHAR},
-      pic_url = #{record.picUrl,jdbcType=VARCHAR},
-      sort_order = #{record.sortOrder,jdbcType=INTEGER},
-      goods = #{record.goods,jdbcType=VARCHAR,typeHandler=com.minimall.db.mybatis.JsonIntegerArrayTypeHandler},
-      add_time = #{record.addTime,jdbcType=TIMESTAMP},
-      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
-      deleted = #{record.deleted,jdbcType=BIT},
-      content = #{record.content,jdbcType=LONGVARCHAR}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
   <update id="updateByExample" parameterType="map">
-    update litemall_topic
+    update litemall_order_goods
     set id = #{record.id,jdbcType=INTEGER},
-      title = #{record.title,jdbcType=VARCHAR},
-      subtitle = #{record.subtitle,jdbcType=VARCHAR},
+      order_id = #{record.orderId,jdbcType=INTEGER},
+      goods_id = #{record.goodsId,jdbcType=INTEGER},
+      goods_name = #{record.goodsName,jdbcType=VARCHAR},
+      goods_sn = #{record.goodsSn,jdbcType=VARCHAR},
+      product_id = #{record.productId,jdbcType=INTEGER},
+      `number` = #{record.number,jdbcType=SMALLINT},
       price = #{record.price,jdbcType=DECIMAL},
-      read_count = #{record.readCount,jdbcType=VARCHAR},
+      specifications = #{record.specifications,jdbcType=VARCHAR,typeHandler=com.minimall.db.mybatis.JsonStringArrayTypeHandler},
       pic_url = #{record.picUrl,jdbcType=VARCHAR},
-      sort_order = #{record.sortOrder,jdbcType=INTEGER},
-      goods = #{record.goods,jdbcType=VARCHAR,typeHandler=com.minimall.db.mybatis.JsonIntegerArrayTypeHandler},
+      `comment` = #{record.comment,jdbcType=INTEGER},
       add_time = #{record.addTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       deleted = #{record.deleted,jdbcType=BIT}
@@ -403,29 +379,38 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.minimall.db.domain.LitemallTopic">
-    update litemall_topic
+  <update id="updateByPrimaryKeySelective" parameterType="com.minimall.db.domain.LitemallOrderGoods">
+    update litemall_order_goods
     <set>
-      <if test="title != null">
-        title = #{title,jdbcType=VARCHAR},
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=INTEGER},
       </if>
-      <if test="subtitle != null">
-        subtitle = #{subtitle,jdbcType=VARCHAR},
+      <if test="goodsId != null">
+        goods_id = #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsName != null">
+        goods_name = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsSn != null">
+        goods_sn = #{goodsSn,jdbcType=VARCHAR},
+      </if>
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="number != null">
+        `number` = #{number,jdbcType=SMALLINT},
       </if>
       <if test="price != null">
         price = #{price,jdbcType=DECIMAL},
       </if>
-      <if test="readCount != null">
-        read_count = #{readCount,jdbcType=VARCHAR},
+      <if test="specifications != null">
+        specifications = #{specifications,jdbcType=VARCHAR,typeHandler=com.minimall.db.mybatis.JsonStringArrayTypeHandler},
       </if>
       <if test="picUrl != null">
         pic_url = #{picUrl,jdbcType=VARCHAR},
       </if>
-      <if test="sortOrder != null">
-        sort_order = #{sortOrder,jdbcType=INTEGER},
-      </if>
-      <if test="goods != null">
-        goods = #{goods,jdbcType=VARCHAR,typeHandler=com.minimall.common.mybatis.JsonIntegerArrayTypeHandler},
+      <if test="comment != null">
+        `comment` = #{comment,jdbcType=INTEGER},
       </if>
       <if test="addTime != null">
         add_time = #{addTime,jdbcType=TIMESTAMP},
@@ -436,45 +421,30 @@
       <if test="deleted != null">
         deleted = #{deleted,jdbcType=BIT},
       </if>
-      <if test="content != null">
-        content = #{content,jdbcType=LONGVARCHAR},
-      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.minimall.db.domain.LitemallTopic">
-    update litemall_topic
-    set title = #{title,jdbcType=VARCHAR},
-      subtitle = #{subtitle,jdbcType=VARCHAR},
+  <update id="updateByPrimaryKey" parameterType="com.minimall.db.domain.LitemallOrderGoods">
+    update litemall_order_goods
+    set order_id = #{orderId,jdbcType=INTEGER},
+      goods_id = #{goodsId,jdbcType=INTEGER},
+      goods_name = #{goodsName,jdbcType=VARCHAR},
+      goods_sn = #{goodsSn,jdbcType=VARCHAR},
+      product_id = #{productId,jdbcType=INTEGER},
+      `number` = #{number,jdbcType=SMALLINT},
       price = #{price,jdbcType=DECIMAL},
-      read_count = #{readCount,jdbcType=VARCHAR},
+      specifications = #{specifications,jdbcType=VARCHAR,typeHandler=com.minimall.db.mybatis.JsonStringArrayTypeHandler},
       pic_url = #{picUrl,jdbcType=VARCHAR},
-      sort_order = #{sortOrder,jdbcType=INTEGER},
-      goods = #{goods,jdbcType=VARCHAR,typeHandler=com.minimall.common.mybatis.JsonIntegerArrayTypeHandler},
-      add_time = #{addTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP},
-      deleted = #{deleted,jdbcType=BIT},
-      content = #{content,jdbcType=LONGVARCHAR}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.minimall.db.domain.LitemallTopic">
-    update litemall_topic
-    set title = #{title,jdbcType=VARCHAR},
-      subtitle = #{subtitle,jdbcType=VARCHAR},
-      price = #{price,jdbcType=DECIMAL},
-      read_count = #{readCount,jdbcType=VARCHAR},
-      pic_url = #{picUrl,jdbcType=VARCHAR},
-      sort_order = #{sortOrder,jdbcType=INTEGER},
-      goods = #{goods,jdbcType=VARCHAR,typeHandler=com.minimall.common.mybatis.JsonIntegerArrayTypeHandler},
+      `comment` = #{comment,jdbcType=INTEGER},
       add_time = #{addTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       deleted = #{deleted,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectOneByExample" parameterType="com.minimall.db.domain.LitemallTopicExample" resultMap="BaseResultMap">
+  <select id="selectOneByExample" parameterType="com.minimall.db.domain.LitemallOrderGoodsExample" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
-    from litemall_topic
+    from litemall_order_goods
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -483,21 +453,7 @@
     </if>
     limit 1
   </select>
-  <select id="selectOneByExampleWithBLOBs" parameterType="com.minimall.db.domain.LitemallTopicExample" resultMap="ResultMapWithBLOBs">
-    select
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from litemall_topic
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-    limit 1
-  </select>
-  <select id="selectOneByExampleSelective" parameterType="map" resultMap="ResultMapWithBLOBs">
+  <select id="selectOneByExampleSelective" parameterType="map" resultMap="BaseResultMap">
     select
     <choose>
       <when test="selective != null and selective.length &gt; 0">
@@ -507,11 +463,9 @@
       </when>
       <otherwise>
         <include refid="Base_Column_List" />
-        ,
-        <include refid="Blob_Column_List" />
       </otherwise>
     </choose>
-    from litemall_topic
+    from litemall_order_goods
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -521,13 +475,13 @@
     limit 1
   </select>
   <update id="logicalDeleteByExample" parameterType="map">
-    update litemall_topic set deleted = 1
+    update litemall_order_goods set deleted = 1
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="logicalDeleteByPrimaryKey" parameterType="java.lang.Integer">
-    update litemall_topic set deleted = 1
+    update litemall_order_goods set deleted = 1
     where id = #{id,jdbcType=INTEGER}
   </update>
 

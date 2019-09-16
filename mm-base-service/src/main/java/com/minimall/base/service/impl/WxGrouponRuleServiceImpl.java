@@ -23,7 +23,7 @@ import java.util.List;
  */
 @Service
 public class WxGrouponRuleServiceImpl implements WxGrouponRuleService {
-    private final Log logger = LogFactory.getLog(WxGrouponRuleService.class);
+    private final Log logger = LogFactory.getLog(WxGrouponRuleServiceImpl.class);
 
     @Autowired
     private LitemallGrouponRulesService grouponRulesService;
@@ -33,11 +33,13 @@ public class WxGrouponRuleServiceImpl implements WxGrouponRuleService {
     private LitemallGoodsService goodsService;
 
 
+    @Override
     public List<GrouponRuleVo> queryList(Integer page, Integer size) {
         return queryList(page, size, "add_time", "desc");
     }
 
 
+    @Override
     public List<GrouponRuleVo> queryList(Integer page, Integer size, String sort, String order) {
         Page<LitemallGrouponRules> grouponRulesList = (Page)grouponRulesService.queryList(page, size, sort, order);
 

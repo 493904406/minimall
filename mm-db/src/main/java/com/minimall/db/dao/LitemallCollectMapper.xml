@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.minimall.db.dao.LitemallFeedbackMapper">
-  <resultMap id="BaseResultMap" type="com.minimall.db.domain.LitemallFeedback">
+<mapper namespace="com.minimall.db.dao.LitemallCollectMapper">
+  <resultMap id="BaseResultMap" type="com.minimall.db.domain.LitemallCollect">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="username" jdbcType="VARCHAR" property="username" />
-    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
-    <result column="feed_type" jdbcType="VARCHAR" property="feedType" />
-    <result column="content" jdbcType="VARCHAR" property="content" />
-    <result column="status" jdbcType="INTEGER" property="status" />
-    <result column="has_picture" jdbcType="BIT" property="hasPicture" />
-    <result column="pic_urls" jdbcType="VARCHAR" property="picUrls" typeHandler="com.minimall.db.mybatis.JsonStringArrayTypeHandler" />
+    <result column="value_id" jdbcType="INTEGER" property="valueId" />
+    <result column="type" jdbcType="TINYINT" property="type" />
     <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="deleted" jdbcType="BIT" property="deleted" />
@@ -35,25 +30,6 @@
                   and ${criterion.condition}
                   <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-            <foreach collection="criteria.picUrlsCriteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.minimall.common.mybatis.JsonStringArrayTypeHandler}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.minimall.common.mybatis.JsonStringArrayTypeHandler} and #{criterion.secondValue,typeHandler=com.minimall.common.mybatis.JsonStringArrayTypeHandler}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem,typeHandler=com.minimall.common.mybatis.JsonStringArrayTypeHandler}
                   </foreach>
                 </when>
               </choose>
@@ -87,41 +63,21 @@
                 </when>
               </choose>
             </foreach>
-            <foreach collection="criteria.picUrlsCriteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.minimall.common.mybatis.JsonStringArrayTypeHandler}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.minimall.common.mybatis.JsonStringArrayTypeHandler} and #{criterion.secondValue,typeHandler=com.minimall.common.mybatis.JsonStringArrayTypeHandler}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem,typeHandler=com.minimall.common.mybatis.JsonStringArrayTypeHandler}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
           </trim>
         </if>
       </foreach>
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, user_id, username, mobile, feed_type, content, `status`, has_picture, pic_urls,
-    add_time, update_time, deleted
+    id, user_id, value_id, `type`, add_time, update_time, deleted
   </sql>
-  <select id="selectByExample" parameterType="com.minimall.db.domain.LitemallFeedbackExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.minimall.db.domain.LitemallCollectExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from litemall_feedback
+    from litemall_collect
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -144,7 +100,7 @@
         <include refid="Base_Column_List" />
       </otherwise>
     </choose>
-    from litemall_feedback
+    from litemall_collect
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -155,13 +111,13 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
-    from litemall_feedback
+    from litemall_collect
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectByPrimaryKeyWithLogicalDelete" parameterType="map" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
-    from litemall_feedback
+    from litemall_collect
     where id = #{id,jdbcType=INTEGER}
       and deleted =
     <choose>
@@ -185,63 +141,44 @@
         <include refid="Base_Column_List" />
       </otherwise>
     </choose>
-    from litemall_feedback
+    from litemall_collect
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from litemall_feedback
+    delete from litemall_collect
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.minimall.db.domain.LitemallFeedbackExample">
-    delete from litemall_feedback
+  <delete id="deleteByExample" parameterType="com.minimall.db.domain.LitemallCollectExample">
+    delete from litemall_collect
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.minimall.db.domain.LitemallFeedback">
+  <insert id="insert" parameterType="com.minimall.db.domain.LitemallCollect">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into litemall_feedback (user_id, username, mobile,
-      feed_type, content, `status`,
-      has_picture, pic_urls,
+    insert into litemall_collect (user_id, value_id, `type`,
       add_time, update_time, deleted
       )
-    values (#{userId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR},
-      #{feedType,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER},
-      #{hasPicture,jdbcType=BIT}, #{picUrls,jdbcType=VARCHAR,typeHandler=com.minimall.db.mybatis.JsonStringArrayTypeHandler},
+    values (#{userId,jdbcType=INTEGER}, #{valueId,jdbcType=INTEGER}, #{type,jdbcType=TINYINT},
       #{addTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{deleted,jdbcType=BIT}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.minimall.db.domain.LitemallFeedback">
+  <insert id="insertSelective" parameterType="com.minimall.db.domain.LitemallCollect">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into litemall_feedback
+    insert into litemall_collect
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="userId != null">
         user_id,
       </if>
-      <if test="username != null">
-        username,
+      <if test="valueId != null">
+        value_id,
       </if>
-      <if test="mobile != null">
-        mobile,
-      </if>
-      <if test="feedType != null">
-        feed_type,
-      </if>
-      <if test="content != null">
-        content,
-      </if>
-      <if test="status != null">
-        `status`,
-      </if>
-      <if test="hasPicture != null">
-        has_picture,
-      </if>
-      <if test="picUrls != null">
-        pic_urls,
+      <if test="type != null">
+        `type`,
       </if>
       <if test="addTime != null">
         add_time,
@@ -257,26 +194,11 @@
       <if test="userId != null">
         #{userId,jdbcType=INTEGER},
       </if>
-      <if test="username != null">
-        #{username,jdbcType=VARCHAR},
+      <if test="valueId != null">
+        #{valueId,jdbcType=INTEGER},
       </if>
-      <if test="mobile != null">
-        #{mobile,jdbcType=VARCHAR},
-      </if>
-      <if test="feedType != null">
-        #{feedType,jdbcType=VARCHAR},
-      </if>
-      <if test="content != null">
-        #{content,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null">
-        #{status,jdbcType=INTEGER},
-      </if>
-      <if test="hasPicture != null">
-        #{hasPicture,jdbcType=BIT},
-      </if>
-      <if test="picUrls != null">
-        #{picUrls,jdbcType=VARCHAR,typeHandler=com.minimall.common.mybatis.JsonStringArrayTypeHandler},
+      <if test="type != null">
+        #{type,jdbcType=TINYINT},
       </if>
       <if test="addTime != null">
         #{addTime,jdbcType=TIMESTAMP},
@@ -289,14 +211,14 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.minimall.db.domain.LitemallFeedbackExample" resultType="java.lang.Long">
-    select count(*) from litemall_feedback
+  <select id="countByExample" parameterType="com.minimall.db.domain.LitemallCollectExample" resultType="java.lang.Long">
+    select count(*) from litemall_collect
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update litemall_feedback
+    update litemall_collect
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
@@ -304,26 +226,11 @@
       <if test="record.userId != null">
         user_id = #{record.userId,jdbcType=INTEGER},
       </if>
-      <if test="record.username != null">
-        username = #{record.username,jdbcType=VARCHAR},
+      <if test="record.valueId != null">
+        value_id = #{record.valueId,jdbcType=INTEGER},
       </if>
-      <if test="record.mobile != null">
-        mobile = #{record.mobile,jdbcType=VARCHAR},
-      </if>
-      <if test="record.feedType != null">
-        feed_type = #{record.feedType,jdbcType=VARCHAR},
-      </if>
-      <if test="record.content != null">
-        content = #{record.content,jdbcType=VARCHAR},
-      </if>
-      <if test="record.status != null">
-        `status` = #{record.status,jdbcType=INTEGER},
-      </if>
-      <if test="record.hasPicture != null">
-        has_picture = #{record.hasPicture,jdbcType=BIT},
-      </if>
-      <if test="record.picUrls != null">
-        pic_urls = #{record.picUrls,jdbcType=VARCHAR,typeHandler=com.minimall.common.mybatis.JsonStringArrayTypeHandler},
+      <if test="record.type != null">
+        `type` = #{record.type,jdbcType=TINYINT},
       </if>
       <if test="record.addTime != null">
         add_time = #{record.addTime,jdbcType=TIMESTAMP},
@@ -340,16 +247,11 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update litemall_feedback
+    update litemall_collect
     set id = #{record.id,jdbcType=INTEGER},
       user_id = #{record.userId,jdbcType=INTEGER},
-      username = #{record.username,jdbcType=VARCHAR},
-      mobile = #{record.mobile,jdbcType=VARCHAR},
-      feed_type = #{record.feedType,jdbcType=VARCHAR},
-      content = #{record.content,jdbcType=VARCHAR},
-      `status` = #{record.status,jdbcType=INTEGER},
-      has_picture = #{record.hasPicture,jdbcType=BIT},
-      pic_urls = #{record.picUrls,jdbcType=VARCHAR,typeHandler=com.minimall.db.mybatis.JsonStringArrayTypeHandler},
+      value_id = #{record.valueId,jdbcType=INTEGER},
+      `type` = #{record.type,jdbcType=TINYINT},
       add_time = #{record.addTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       deleted = #{record.deleted,jdbcType=BIT}
@@ -357,32 +259,17 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.minimall.db.domain.LitemallFeedback">
-    update litemall_feedback
+  <update id="updateByPrimaryKeySelective" parameterType="com.minimall.db.domain.LitemallCollect">
+    update litemall_collect
     <set>
       <if test="userId != null">
         user_id = #{userId,jdbcType=INTEGER},
       </if>
-      <if test="username != null">
-        username = #{username,jdbcType=VARCHAR},
+      <if test="valueId != null">
+        value_id = #{valueId,jdbcType=INTEGER},
       </if>
-      <if test="mobile != null">
-        mobile = #{mobile,jdbcType=VARCHAR},
-      </if>
-      <if test="feedType != null">
-        feed_type = #{feedType,jdbcType=VARCHAR},
-      </if>
-      <if test="content != null">
-        content = #{content,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null">
-        `status` = #{status,jdbcType=INTEGER},
-      </if>
-      <if test="hasPicture != null">
-        has_picture = #{hasPicture,jdbcType=BIT},
-      </if>
-      <if test="picUrls != null">
-        pic_urls = #{picUrls,jdbcType=VARCHAR,typeHandler=com.minimall.common.mybatis.JsonStringArrayTypeHandler},
+      <if test="type != null">
+        `type` = #{type,jdbcType=TINYINT},
       </if>
       <if test="addTime != null">
         add_time = #{addTime,jdbcType=TIMESTAMP},
@@ -396,25 +283,20 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.minimall.db.domain.LitemallFeedback">
-    update litemall_feedback
+  <update id="updateByPrimaryKey" parameterType="com.minimall.db.domain.LitemallCollect">
+    update litemall_collect
     set user_id = #{userId,jdbcType=INTEGER},
-      username = #{username,jdbcType=VARCHAR},
-      mobile = #{mobile,jdbcType=VARCHAR},
-      feed_type = #{feedType,jdbcType=VARCHAR},
-      content = #{content,jdbcType=VARCHAR},
-      `status` = #{status,jdbcType=INTEGER},
-      has_picture = #{hasPicture,jdbcType=BIT},
-      pic_urls = #{picUrls,jdbcType=VARCHAR,typeHandler=com.minimall.common.mybatis.JsonStringArrayTypeHandler},
+      value_id = #{valueId,jdbcType=INTEGER},
+      `type` = #{type,jdbcType=TINYINT},
       add_time = #{addTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       deleted = #{deleted,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectOneByExample" parameterType="com.minimall.db.domain.LitemallFeedbackExample" resultMap="BaseResultMap">
+  <select id="selectOneByExample" parameterType="com.minimall.db.domain.LitemallCollectExample" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
-    from litemall_feedback
+    from litemall_collect
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -435,7 +317,7 @@
         <include refid="Base_Column_List" />
       </otherwise>
     </choose>
-    from litemall_feedback
+    from litemall_collect
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -445,13 +327,13 @@
     limit 1
   </select>
   <update id="logicalDeleteByExample" parameterType="map">
-    update litemall_feedback set deleted = 1
+    update litemall_collect set deleted = 1
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="logicalDeleteByPrimaryKey" parameterType="java.lang.Integer">
-    update litemall_feedback set deleted = 1
+    update litemall_collect set deleted = 1
     where id = #{id,jdbcType=INTEGER}
   </update>
 

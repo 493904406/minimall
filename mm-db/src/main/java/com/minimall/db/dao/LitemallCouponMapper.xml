@@ -53,15 +53,15 @@
                   and ${criterion.condition}
                 </when>
                 <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.minimall.common.mybatis.JsonIntegerArrayTypeHandler}
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.minimall.db.mybatis.JsonIntegerArrayTypeHandler}
                 </when>
                 <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.minimall.common.mybatis.JsonIntegerArrayTypeHandler} and #{criterion.secondValue,typeHandler=com.minimall.common.mybatis.JsonIntegerArrayTypeHandler}
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.minimall.db.mybatis.JsonIntegerArrayTypeHandler} and #{criterion.secondValue,typeHandler=com.minimall.db.mybatis.JsonIntegerArrayTypeHandler}
                 </when>
                 <when test="criterion.listValue">
                   and ${criterion.condition}
                   <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem,typeHandler=com.minimall.common.mybatis.JsonIntegerArrayTypeHandler}
+                    #{listItem,typeHandler=com.minimall.db.mybatis.JsonIntegerArrayTypeHandler}
                   </foreach>
                 </when>
               </choose>
@@ -101,15 +101,15 @@
                   and ${criterion.condition}
                 </when>
                 <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.minimall.common.mybatis.JsonIntegerArrayTypeHandler}
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.minimall.db.mybatis.JsonIntegerArrayTypeHandler}
                 </when>
                 <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.minimall.common.mybatis.JsonIntegerArrayTypeHandler} and #{criterion.secondValue,typeHandler=com.minimall.common.mybatis.JsonIntegerArrayTypeHandler}
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.minimall.db.mybatis.JsonIntegerArrayTypeHandler} and #{criterion.secondValue,typeHandler=com.minimall.db.mybatis.JsonIntegerArrayTypeHandler}
                 </when>
                 <when test="criterion.listValue">
                   and ${criterion.condition}
                   <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem,typeHandler=com.minimall.common.mybatis.JsonIntegerArrayTypeHandler}
+                    #{listItem,typeHandler=com.minimall.db.mybatis.JsonIntegerArrayTypeHandler}
                   </foreach>
                 </when>
               </choose>
@@ -322,7 +322,7 @@
         #{goodsType,jdbcType=SMALLINT},
       </if>
       <if test="goodsValue != null">
-        #{goodsValue,jdbcType=VARCHAR,typeHandler=com.minimall.common.mybatis.JsonIntegerArrayTypeHandler},
+        #{goodsValue,jdbcType=VARCHAR,typeHandler=com.minimall.db.mybatis.JsonIntegerArrayTypeHandler},
       </if>
       <if test="code != null">
         #{code,jdbcType=VARCHAR},
@@ -393,7 +393,7 @@
         goods_type = #{record.goodsType,jdbcType=SMALLINT},
       </if>
       <if test="record.goodsValue != null">
-        goods_value = #{record.goodsValue,jdbcType=VARCHAR,typeHandler=com.minimall.common.mybatis.JsonIntegerArrayTypeHandler},
+        goods_value = #{record.goodsValue,jdbcType=VARCHAR,typeHandler=com.minimall.db.mybatis.JsonIntegerArrayTypeHandler},
       </if>
       <if test="record.code != null">
         code = #{record.code,jdbcType=VARCHAR},
@@ -484,7 +484,7 @@
         goods_type = #{goodsType,jdbcType=SMALLINT},
       </if>
       <if test="goodsValue != null">
-        goods_value = #{goodsValue,jdbcType=VARCHAR,typeHandler=com.minimall.common.mybatis.JsonIntegerArrayTypeHandler},
+        goods_value = #{goodsValue,jdbcType=VARCHAR,typeHandler=com.minimall.db.mybatis.JsonIntegerArrayTypeHandler},
       </if>
       <if test="code != null">
         code = #{code,jdbcType=VARCHAR},
@@ -525,7 +525,7 @@
       `type` = #{type,jdbcType=SMALLINT},
       `status` = #{status,jdbcType=SMALLINT},
       goods_type = #{goodsType,jdbcType=SMALLINT},
-      goods_value = #{goodsValue,jdbcType=VARCHAR,typeHandler=com.minimall.common.mybatis.JsonIntegerArrayTypeHandler},
+      goods_value = #{goodsValue,jdbcType=VARCHAR,typeHandler=com.minimall.db.mybatis.JsonIntegerArrayTypeHandler},
       code = #{code,jdbcType=VARCHAR},
       time_type = #{timeType,jdbcType=SMALLINT},
       `days` = #{days,jdbcType=SMALLINT},

@@ -11,13 +11,13 @@ zuul:
   prefix: /wx # 设置一个公共的前缀
   routes:
     api-a:
-      path: base/**
+      path: /base/**
       serviceId: base-service
     api-b:
-      path: user/**
+      path: /user/**
       serviceId: user-service
     api-c:
-      path: notify/**
+      path: /notify/**
       serviceId: notify-service
 
 
