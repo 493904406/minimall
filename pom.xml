@@ -20,21 +20,21 @@
     </parent>
     <!-- 模块说明：这里声明多个子模块 -->
     <modules>
-        <module>mm-order-service</module>
-        <module>mm-commont-service</module>
-        <module>mm-user-service</module>
-        <module>mm-search-service</module>
-        <module>mm-base-service</module>
-        <module>mm-worker-service</module>
-        <module>mm-message-service</module>
+        <module>mm-order-server</module>
+        <module>mm-commont-server</module>
+        <module>mm-user-server</module>
+        <module>mm-search-server</module>
+        <module>mm-base-server</module>
+        <module>mm-worker-server</module>
+        <module>mm-message-server</module>
         <module>mm-common</module>
         <module>mm-api-gateway</module>
         <module>mm-common-eureka</module>
         <module>user-consumer</module>
-        <module>ribbon-consumer</module>
+        <module>mm-activity-server</module>
         <module>mm-admin-server</module>
-        <module>mm-config</module>
-        <module>mm-db</module>
+        <module>mm-config-server</module>
+        <module>mm-db-server</module>
     </modules>
 
     <properties>
@@ -106,42 +106,52 @@
             </dependency>
             <dependency>
                 <groupId>com.minimall</groupId>
-                <artifactId>mm-db</artifactId>
+                <artifactId>mm-db-server</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.minimall</groupId>
-                <artifactId>mm-config</artifactId>
+                <artifactId>mm-config-server</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.minimall</groupId>
-                <artifactId>mm-commont-service</artifactId>
+                <artifactId>mm-commont-server</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.minimall</groupId>
-                <artifactId>mm-message-service</artifactId>
+                <artifactId>mm-message-server</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.minimall</groupId>
-                <artifactId>mm-order-service</artifactId>
+                <artifactId>mm-order-server</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.minimall</groupId>
-                <artifactId>mm-base-service</artifactId>
+                <artifactId>mm-base-server</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.minimall</groupId>
-                <artifactId>mm-user-service</artifactId>
+                <artifactId>mm-user-server</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.minimall</groupId>
-                <artifactId>mm-worker-service</artifactId>
+                <artifactId>mm-worker-server</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.minimall</groupId>
+                <artifactId>mm-search-server</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.minimall</groupId>
+                <artifactId>mm-activity-server</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

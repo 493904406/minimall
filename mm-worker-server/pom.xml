@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>mm-search-service</artifactId>
+    <artifactId>mm-worker-server</artifactId>
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -28,7 +28,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <!-- 指定该Main Class为全局的唯一入口 -->
-                    <mainClass>com.minimall.search.SearchApplication</mainClass>
+                    <mainClass>com.minimall.worker.WorkerApplication</mainClass>
                     <layout>ZIP</layout>
                 </configuration>
                 <executions>

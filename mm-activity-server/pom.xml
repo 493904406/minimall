@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>ribbon-consumer</artifactId>
+    <artifactId>mm-activity-server</artifactId>
     <dependencies>
     <dependency>
         <groupId>org.springframework.boot</groupId>
@@ -19,14 +19,6 @@
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
     </dependency>
-    <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-starter-hystrix</artifactId>
-    </dependency>
-     <dependency>
-         <groupId>org.springframework.cloud</groupId>
-         <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
-     </dependency>
     </dependencies>
 
     <build>
@@ -47,25 +39,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- mybatis generator 自动生成代码插件 -->
-            <!--  <plugin>
-                  <groupId>org.mybatis.generator</groupId>
-                  <artifactId>mybatis-generator-maven-plugin</artifactId>
-                  <version>1.3.7</version>
-                  <configuration>
-                      <configurationFile>${basedir}/src/main/resources/generator/generatorConfig.xml</configurationFile>
-                      <overwrite>true</overwrite>
-                      <verbose>true</verbose>
-                  </configuration>
-                  <executions>
-                      <execution>
-                          <id>Generate MyBatis Artifacts</id>
-                          <goals>
-                              <goal>generate</goal>
-                          </goals>
-                      </execution>
-                  </executions>
-              </plugin>-->
         </plugins>
     </build>
 </project>
