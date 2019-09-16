@@ -1,13 +1,12 @@
 package com.minimall.base.controller;
 
+import com.minimall.common.utils.ResponseUtil;
+import com.minimall.db.domain.LitemallBrand;
+import com.minimall.db.service.LitemallBrandService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.linlinjava.litemall.core.util.ResponseUtil;
-import org.linlinjava.litemall.core.validator.Order;
-import org.linlinjava.litemall.core.validator.Sort;
-import org.linlinjava.litemall.db.domain.LitemallBrand;
-import org.linlinjava.litemall.db.service.LitemallBrandService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

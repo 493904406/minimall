@@ -17,7 +17,7 @@
         </dependency>
         <dependency>
             <groupId>com.minimall</groupId>
-            <artifactId>mm-db</artifactId>
+            <artifactId>mm-db-server</artifactId>
         </dependency>
 
         <dependency>

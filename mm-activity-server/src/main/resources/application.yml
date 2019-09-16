@@ -6,7 +6,7 @@ server:
   port: 8764
 spring:
   application:
-    name: ribbon-consumer
+    name: activity-consumer
 
 management:
   endpoints:

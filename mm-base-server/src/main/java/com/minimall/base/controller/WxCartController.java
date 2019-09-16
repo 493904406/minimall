@@ -1,14 +1,12 @@
 package com.minimall.base.controller;
 
-import org.apache.commons.lang3.ObjectUtils;
+import com.minimall.base.annotation.LoginUser;
+import com.minimall.common.utils.ResponseUtil;
+import com.minimall.db.domain.LitemallCart;
+import com.minimall.db.domain.LitemallGoods;
+import com.minimall.db.service.*;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.linlinjava.litemall.core.system.SystemConfig;
-import org.linlinjava.litemall.core.util.JacksonUtil;
-import org.linlinjava.litemall.core.util.ResponseUtil;
-import org.linlinjava.litemall.db.domain.*;
-import org.linlinjava.litemall.db.service.*;
-import org.linlinjava.litemall.wx.annotation.LoginUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -18,9 +16,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static org.linlinjava.litemall.wx.util.WxResponseCode.GOODS_NO_STOCK;
-import static org.linlinjava.litemall.wx.util.WxResponseCode.GOODS_UNSHELVE;
 
 /**
  * 用户购物车服务

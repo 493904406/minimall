@@ -1,8 +1,7 @@
-package com.minimall.ribbon;
+package com.minimall.activity;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
@@ -20,9 +19,9 @@ import org.springframework.web.client.RestTemplate;
 @EnableEurekaClient
 @RibbonClients
 @EnableHystrix
-public class Application {
+public class ActivityApplication {
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(ActivityApplication.class, args);
     }
 
     @Bean

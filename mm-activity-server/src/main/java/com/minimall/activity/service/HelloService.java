@@ -1,4 +1,4 @@
-package com.minimall.ribbon.service;
+package com.minimall.activity.service;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
