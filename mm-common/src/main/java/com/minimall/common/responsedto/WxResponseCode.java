@@ -1,4 +1,4 @@
-package com.minimall.common.utils;
+package com.minimall.common.responsedto;
 
 public class WxResponseCode {
     public static final Integer AUTH_INVALID_ACCOUNT = 700;

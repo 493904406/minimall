@@ -1,14 +1,14 @@
 package com.minimall.user.controller;
 
+import com.minimall.common.utils.JacksonUtil;
+import com.minimall.common.utils.ResponseUtil;
+import com.minimall.db.domain.LitemallFootprint;
+import com.minimall.db.domain.LitemallGoods;
+import com.minimall.db.service.LitemallFootprintService;
+import com.minimall.db.service.LitemallGoodsService;
+import com.minimall.common.annotation.LoginUser;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.linlinjava.litemall.core.util.JacksonUtil;
-import org.linlinjava.litemall.core.util.ResponseUtil;
-import org.linlinjava.litemall.db.domain.LitemallFootprint;
-import org.linlinjava.litemall.db.domain.LitemallGoods;
-import org.linlinjava.litemall.db.service.LitemallFootprintService;
-import org.linlinjava.litemall.db.service.LitemallGoodsService;
-import org.linlinjava.litemall.wx.annotation.LoginUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;

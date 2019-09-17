@@ -1,8 +1,8 @@
 package com.minimall.admin.web;
 
 import com.minimall.admin.annotation.RequiresPermissionsDesc;
-import com.minimall.admin.validator.Order;
-import com.minimall.admin.validator.Sort;
+import com.minimall.common.validator.Order;
+import com.minimall.common.validator.Sort;
 import com.minimall.common.utils.ResponseUtil;
 import com.minimall.db.domain.LitemallLog;
 import com.minimall.db.service.LitemallLogService;

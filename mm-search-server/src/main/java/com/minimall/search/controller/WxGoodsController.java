@@ -1,16 +1,16 @@
 package com.minimall.search.controller;
 
 import com.github.pagehelper.PageInfo;
-import com.mysql.jdbc.StringUtils;
+import com.minimall.base.system.SystemConfig;
+import com.minimall.common.annotation.LoginUser;
+import com.minimall.common.validator.Sort;
+import com.minimall.common.validator.Order;
+import com.minimall.common.utils.ResponseUtil;
+import com.minimall.db.domain.*;
+import com.minimall.db.service.*;
+import com.mysql.cj.util.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.linlinjava.litemall.core.system.SystemConfig;
-import org.linlinjava.litemall.core.util.ResponseUtil;
-import org.linlinjava.litemall.core.validator.Order;
-import org.linlinjava.litemall.core.validator.Sort;
-import org.linlinjava.litemall.db.domain.*;
-import org.linlinjava.litemall.db.service.*;
-import org.linlinjava.litemall.wx.annotation.LoginUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;

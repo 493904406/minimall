@@ -1,14 +1,14 @@
 package com.minimall.user.controller;
 
+import com.minimall.common.utils.RegexUtil;
+import com.minimall.common.utils.ResponseUtil;
+import com.minimall.db.domain.LitemallAddress;
+import com.minimall.db.service.LitemallAddressService;
+import com.minimall.db.service.LitemallRegionService;
+import com.minimall.common.annotation.LoginUser;
+import com.minimall.user.service.impl.GetRegionService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.linlinjava.litemall.core.util.RegexUtil;
-import org.linlinjava.litemall.core.util.ResponseUtil;
-import org.linlinjava.litemall.db.domain.LitemallAddress;
-import org.linlinjava.litemall.db.service.LitemallAddressService;
-import org.linlinjava.litemall.db.service.LitemallRegionService;
-import org.linlinjava.litemall.wx.annotation.LoginUser;
-import org.linlinjava.litemall.wx.service.GetRegionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;

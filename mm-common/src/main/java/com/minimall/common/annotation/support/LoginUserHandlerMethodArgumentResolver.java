@@ -1,7 +1,7 @@
-package com.minimall.base.annotation.support;
+package com.minimall.common.annotation.support;
 
-import com.minimall.base.annotation.LoginUser;
-import com.minimall.base.service.impl.UserTokenManager;
+import com.minimall.common.annotation.LoginUser;
+import com.minimall.common.service.UserTokenManager;
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;

@@ -2,16 +2,17 @@ package com.minimall.user.controller;
 import cn.binarywang.wx.miniapp.api.WxMaService;
 import cn.binarywang.wx.miniapp.bean.WxMaJscode2SessionResult;
 import cn.binarywang.wx.miniapp.bean.WxMaPhoneNumberInfo;
+import com.minimall.common.annotation.LoginUser;
 import com.minimall.common.enums.NotifyType;
 import com.minimall.common.utils.*;
 import com.minimall.db.domain.LitemallUser;
+import com.minimall.db.service.CouponAssignService;
 import com.minimall.db.service.LitemallUserService;
 import com.minimall.message.service.NotifyService;
-import com.minimall.user.annotation.LoginUser;
 import com.minimall.user.domain.dto.WxLoginInfo;
 import com.minimall.user.domain.dto.UserInfo;
 import com.minimall.user.service.impl.CaptchaCodeManager;
-import com.minimall.user.service.impl.UserTokenManager;
+import com.minimall.common.service.UserTokenManager;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,8 +49,8 @@ public class WxAuthController {
     @Autowired
     private NotifyService notifyService;
 
-   /* @Autowired
-    private CouponAssignService couponAssignService;*/
+    @Autowired
+    private CouponAssignService couponAssignService;
 
     /**
      * 账号登录
@@ -149,7 +150,7 @@ public class WxAuthController {
             userService.add(user);
 
             // 新用户发送注册优惠券
-            //couponAssignService.assignForRegister(user.getId());
+            couponAssignService.assignForRegister(user.getId());
         } else {
             user.setLastLoginTime(new Date());
             user.setLastLoginIp(IpUtil.getIpAddr(request));
@@ -298,7 +299,7 @@ public class WxAuthController {
         userService.add(user);
 
         // 给新用户发送注册优惠券
-        //couponAssignService.assignForRegister(user.getId());
+        couponAssignService.assignForRegister(user.getId());
 
         // userInfo
         UserInfo userInfo = new UserInfo();

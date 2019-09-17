@@ -1,7 +1,6 @@
-package com.minimall.admin.validator;
+package com.minimall.common.validator;
 
 import com.google.common.collect.Lists;
-
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.util.List;

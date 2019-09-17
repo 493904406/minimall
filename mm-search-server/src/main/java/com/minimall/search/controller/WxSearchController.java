@@ -1,13 +1,13 @@
 package com.minimall.search.controller;
 
+import com.minimall.common.annotation.LoginUser;
+import com.minimall.common.utils.ResponseUtil;
+import com.minimall.db.domain.LitemallKeyword;
+import com.minimall.db.domain.LitemallSearchHistory;
+import com.minimall.db.service.LitemallKeywordService;
+import com.minimall.db.service.LitemallSearchHistoryService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.linlinjava.litemall.core.util.ResponseUtil;
-import org.linlinjava.litemall.db.domain.LitemallKeyword;
-import org.linlinjava.litemall.db.domain.LitemallSearchHistory;
-import org.linlinjava.litemall.db.service.LitemallKeywordService;
-import org.linlinjava.litemall.db.service.LitemallSearchHistoryService;
-import org.linlinjava.litemall.wx.annotation.LoginUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;

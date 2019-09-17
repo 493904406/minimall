@@ -1,10 +1,10 @@
 package com.minimall.user.controller;
 
+import com.minimall.common.utils.ResponseUtil;
+import com.minimall.db.service.LitemallOrderService;
+import com.minimall.common.annotation.LoginUser;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.linlinjava.litemall.core.util.ResponseUtil;
-import org.linlinjava.litemall.db.service.LitemallOrderService;
-import org.linlinjava.litemall.wx.annotation.LoginUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;

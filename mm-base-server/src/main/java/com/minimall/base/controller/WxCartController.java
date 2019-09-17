@@ -1,6 +1,6 @@
 package com.minimall.base.controller;
 
-import com.minimall.base.annotation.LoginUser;
+import com.minimall.common.annotation.LoginUser;
 import com.minimall.common.utils.ResponseUtil;
 import com.minimall.db.domain.LitemallCart;
 import com.minimall.db.domain.LitemallGoods;

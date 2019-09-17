@@ -1,13 +1,14 @@
 package com.minimall.user.controller;
 
+import com.minimall.common.utils.DateUtil;
+import com.minimall.common.utils.ResponseUtil;
+import com.minimall.db.domain.LitemallUser;
+import com.minimall.db.domain.LitemallUserFormid;
+import com.minimall.db.service.LitemallUserFormIdService;
+import com.minimall.db.service.LitemallUserService;
+import com.minimall.common.annotation.LoginUser;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.linlinjava.litemall.core.util.ResponseUtil;
-import org.linlinjava.litemall.db.domain.LitemallUser;
-import org.linlinjava.litemall.db.domain.LitemallUserFormid;
-import org.linlinjava.litemall.db.service.LitemallUserFormIdService;
-import org.linlinjava.litemall.db.service.LitemallUserService;
-import org.linlinjava.litemall.wx.annotation.LoginUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.NotNull;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @RestController
 @RequestMapping("/wx/formid")
@@ -41,7 +42,7 @@ public class WxUserFormId {
         userFormid.setFormid(formId);
         userFormid.setIsprepay(false);
         userFormid.setUseamount(1);
-        userFormid.setExpireTime(LocalDateTime.now().plusDays(7));
+        userFormid.setExpireTime(DateUtil.addDays(new Date(),7));
         formIdService.addUserFormid(userFormid);
 
         return ResponseUtil.ok();

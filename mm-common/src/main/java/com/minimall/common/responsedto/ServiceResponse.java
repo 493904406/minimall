@@ -1,4 +1,4 @@
-package com.minimall.common.responseDto;
+package com.minimall.common.responsedto;
 
 
 

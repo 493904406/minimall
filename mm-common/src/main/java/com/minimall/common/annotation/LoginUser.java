@@ -1,4 +1,4 @@
-package com.minimall.user.annotation;
+package com.minimall.common.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

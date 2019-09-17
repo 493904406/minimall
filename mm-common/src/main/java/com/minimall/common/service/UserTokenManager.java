@@ -1,4 +1,4 @@
-package com.minimall.base.service.impl;
+package com.minimall.common.service;
 
 
 import com.minimall.common.utils.JwtHelper;
@@ -6,7 +6,7 @@ import com.minimall.common.utils.JwtHelper;
 /**
  * @author yanxubin
  * @Description 维护用户token
- * @date:2019/9/10
+ * @date:2019/9/3
  * @mail yxb_825@163.com
  */
 public class UserTokenManager {
