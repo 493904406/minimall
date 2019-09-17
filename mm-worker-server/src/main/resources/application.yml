@@ -12,7 +12,8 @@ eureka:
 
 spring:
   application:
-    name: worker-service
+    name: worker-server
+
 
 management:
   endpoints:

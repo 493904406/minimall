@@ -6,19 +6,34 @@ server:
   port: 8769
 spring:
   application:
-    name: service-zuul
+    name: zuul-server
 zuul:
   prefix: /wx # 设置一个公共的前缀
   routes:
     api-a:
       path: /base/**
-      serviceId: base-service
+      serviceId: base-server
     api-b:
       path: /user/**
-      serviceId: user-service
+      serviceId: user-server
     api-c:
       path: /notify/**
-      serviceId: notify-service
+      serviceId: notify-server
+    api-d:
+      path: /activity/**
+      serviceId: activity-server
+    api-e:
+      path: /commont/**
+      serviceId: commont-server
+    api-f:
+      path: /order/**
+      serviceId: order-server
+    api-g:
+      path: /search/**
+      serviceId: search-server
+    api-h:
+      path: /admin/**
+      serviceId: admin-server
 
 
 management:
