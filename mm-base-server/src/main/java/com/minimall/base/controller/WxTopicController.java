@@ -1,14 +1,14 @@
 package com.minimall.base.controller;
 
+import com.minimall.common.utils.ResponseUtil;
+import com.minimall.common.validator.Order;
+import com.minimall.common.validator.Sort;
+import com.minimall.db.domain.LitemallGoods;
+import com.minimall.db.domain.LitemallTopic;
+import com.minimall.db.service.LitemallGoodsService;
+import com.minimall.db.service.LitemallTopicService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.linlinjava.litemall.core.util.ResponseUtil;
-import org.linlinjava.litemall.core.validator.Order;
-import org.linlinjava.litemall.core.validator.Sort;
-import org.linlinjava.litemall.db.domain.LitemallGoods;
-import org.linlinjava.litemall.db.domain.LitemallTopic;
-import org.linlinjava.litemall.db.service.LitemallGoodsService;
-import org.linlinjava.litemall.db.service.LitemallTopicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -64,8 +64,9 @@ public class WxTopicController {
         List<LitemallGoods> goods = new ArrayList<>();
         for (Integer i : topic.getGoods()) {
             LitemallGoods good = goodsService.findByIdVO(i);
-            if (null != good)
+            if (null != good){
                 goods.add(good);
+            }
         }
 
         Map<String, Object> entity = new HashMap<String, Object>();

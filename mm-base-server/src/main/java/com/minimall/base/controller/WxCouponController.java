@@ -1,19 +1,20 @@
 package com.minimall.base.controller;
 
+import com.minimall.base.domain.dto.CouponVo;
+import com.minimall.common.annotation.LoginUser;
+import com.minimall.common.responsedto.WxResponseCode;
+import com.minimall.common.utils.DateUtil;
+import com.minimall.common.utils.JacksonUtil;
+import com.minimall.common.utils.ResponseUtil;
+import com.minimall.common.validator.Order;
+import com.minimall.common.validator.Sort;
+import com.minimall.db.domain.LitemallCart;
+import com.minimall.db.domain.LitemallCoupon;
+import com.minimall.db.domain.LitemallCouponUser;
+import com.minimall.db.domain.LitemallGrouponRules;
+import com.minimall.db.service.*;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.linlinjava.litemall.core.util.JacksonUtil;
-import org.linlinjava.litemall.core.util.ResponseUtil;
-import org.linlinjava.litemall.core.validator.Order;
-import org.linlinjava.litemall.core.validator.Sort;
-import org.linlinjava.litemall.db.domain.LitemallCart;
-import org.linlinjava.litemall.db.domain.LitemallCoupon;
-import org.linlinjava.litemall.db.domain.LitemallCouponUser;
-import org.linlinjava.litemall.db.domain.LitemallGrouponRules;
-import org.linlinjava.litemall.db.service.*;
-import org.linlinjava.litemall.wx.annotation.LoginUser;
-import org.linlinjava.litemall.wx.util.WxResponseCode;
-import org.linlinjava.litemall.wx.vo.CouponVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,7 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -240,9 +242,9 @@ public class WxCouponController {
             couponUser.setEndTime(coupon.getEndTime());
         }
         else{
-            LocalDateTime now = LocalDateTime.now();
+            Date now = new Date();
             couponUser.setStartTime(now);
-            couponUser.setEndTime(now.plusDays(coupon.getDays()));
+            couponUser.setEndTime(DateUtil.addDays(now,coupon.getDays()));
         }
         couponUserService.add(couponUser);
 
@@ -319,9 +321,9 @@ public class WxCouponController {
             couponUser.setEndTime(coupon.getEndTime());
         }
         else{
-            LocalDateTime now = LocalDateTime.now();
+            Date now = new Date();
             couponUser.setStartTime(now);
-            couponUser.setEndTime(now.plusDays(coupon.getDays()));
+            couponUser.setEndTime(DateUtil.addDays(now,coupon.getDays()));
         }
         couponUserService.add(couponUser);
 

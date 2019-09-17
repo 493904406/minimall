@@ -1,11 +1,11 @@
 package com.minimall.base.controller;
 
+import com.minimall.base.service.cache.HomeCacheManager;
+import com.minimall.common.utils.ResponseUtil;
+import com.minimall.db.domain.LitemallCategory;
+import com.minimall.db.service.LitemallCategoryService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.linlinjava.litemall.core.util.ResponseUtil;
-import org.linlinjava.litemall.db.domain.LitemallCategory;
-import org.linlinjava.litemall.db.service.LitemallCategoryService;
-import org.linlinjava.litemall.wx.service.HomeCacheManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;

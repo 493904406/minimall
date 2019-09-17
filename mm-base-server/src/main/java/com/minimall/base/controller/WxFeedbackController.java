@@ -1,15 +1,15 @@
 package com.minimall.base.controller;
 
+import com.minimall.common.annotation.LoginUser;
+import com.minimall.common.utils.RegexUtil;
+import com.minimall.common.utils.ResponseUtil;
+import com.minimall.db.domain.LitemallFeedback;
+import com.minimall.db.domain.LitemallUser;
+import com.minimall.db.service.LitemallFeedbackService;
+import com.minimall.db.service.LitemallUserService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.linlinjava.litemall.core.util.RegexUtil;
-import org.linlinjava.litemall.core.util.ResponseUtil;
-import org.linlinjava.litemall.db.domain.LitemallFeedback;
-import org.linlinjava.litemall.db.domain.LitemallUser;
-import org.linlinjava.litemall.db.service.LitemallFeedbackService;
-import org.linlinjava.litemall.db.service.LitemallUserService;
-import org.linlinjava.litemall.wx.annotation.LoginUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,8 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * 意见反馈服务
  *
- * @author Yogeek
- * @date 2018/8/25 14:10
  */
 @RestController
 @RequestMapping("/wx/feedback")

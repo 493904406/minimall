@@ -1,9 +1,9 @@
 package com.minimall.base.controller;
 
-import com.minimall.base.annotation.LoginUser;
 import com.minimall.base.service.WxGrouponRuleService;
 import com.minimall.base.service.cache.HomeCacheManager;
 import com.minimall.base.system.SystemConfig;
+import com.minimall.common.annotation.LoginUser;
 import com.minimall.common.utils.ResponseUtil;
 import com.minimall.db.domain.LitemallCategory;
 import com.minimall.db.domain.LitemallGoods;

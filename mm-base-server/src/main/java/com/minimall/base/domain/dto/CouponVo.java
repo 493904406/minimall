@@ -1,6 +1,7 @@
 package com.minimall.base.domain.dto;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 public class CouponVo {
     private Integer id;
@@ -9,8 +10,8 @@ public class CouponVo {
     private String tag;
     private String min;
     private String discount;
-    private LocalDateTime startTime;
-    private LocalDateTime endTime;
+    private Date startTime;
+    private Date endTime;
 
     public Integer getId() {
         return id;
@@ -60,19 +61,19 @@ public class CouponVo {
         this.discount = discount;
     }
 
-    public LocalDateTime getStartTime() {
+    public Date getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(LocalDateTime startTime) {
+    public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
 
-    public LocalDateTime getEndTime() {
+    public Date getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(LocalDateTime endTime) {
+    public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
 }

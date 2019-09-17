@@ -63,6 +63,9 @@
         <pagehelper.version>1.2.12</pagehelper.version>
         <weixin.miniapp.version>3.5.2.B</weixin.miniapp.version>
         <weixin.pay.version>3.5.2.B</weixin.pay.version>
+        <aliyun.version>2.5.0</aliyun.version>
+        <qiniu.version>[7.2.0, 7.2.99]</qiniu.version>
+        <qcloud.version>5.4.4</qcloud.version>
     </properties>
 
     <dependencies>
@@ -246,6 +249,23 @@
                 <artifactId>weixin-java-pay</artifactId>
                 <version>${weixin.pay.version}</version>
             </dependency>
+            <!--云-->
+            <dependency>
+                <groupId>com.aliyun.oss</groupId>
+                <artifactId>aliyun-sdk-oss</artifactId>
+                <version>${aliyun.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.qiniu</groupId>
+                <artifactId>qiniu-java-sdk</artifactId>
+                <version>${qiniu.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.qcloud</groupId>
+                <artifactId>cos_api</artifactId>
+                <version>${qcloud.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
     <build>

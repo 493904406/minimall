@@ -1,10 +1,17 @@
 package com.minimall.order.service;
 
+import com.github.binarywang.wxpay.bean.notify.WxPayNotifyResponse;
+import com.github.binarywang.wxpay.bean.notify.WxPayOrderNotifyResult;
+import com.github.binarywang.wxpay.bean.order.WxPayMpOrderResult;
+import com.github.binarywang.wxpay.bean.request.WxPayUnifiedOrderRequest;
+import com.github.binarywang.wxpay.bean.result.BaseWxPayResult;
+import com.github.binarywang.wxpay.constant.WxPayConstants;
+import com.github.binarywang.wxpay.exception.WxPayException;
 import com.github.binarywang.wxpay.service.WxPayService;
 import com.minimall.admin.qcode.QCodeService;
 import com.minimall.base.system.SystemConfig;
-import com.minimall.common.utils.JacksonUtil;
-import com.minimall.common.utils.ResponseUtil;
+import com.minimall.common.enums.NotifyType;
+import com.minimall.common.utils.*;
 import com.minimall.db.domain.*;
 import com.minimall.db.service.*;
 import com.minimall.db.util.OrderHandleOption;
@@ -12,6 +19,7 @@ import com.minimall.db.util.OrderUtil;
 import com.minimall.message.express.ExpressService;
 import com.minimall.message.express.dao.ExpressInfo;
 import com.minimall.message.service.NotifyService;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -499,7 +507,7 @@ public class WxOrderService {
         }
 
         // 检测是否能够取消
-        org.linlinjava.litemall.db.util.OrderHandleOption handleOption = OrderUtil.build(order);
+        OrderHandleOption handleOption = OrderUtil.build(order);
         if (!handleOption.isPay()) {
             return ResponseUtil.fail(ORDER_INVALID_OPERATION, "订单不能支付");
         }
@@ -532,7 +540,7 @@ public class WxOrderService {
             userFormid.setFormid(prepayId);
             userFormid.setIsprepay(true);
             userFormid.setUseamount(3);
-            userFormid.setExpireTime(LocalDateTime.now().plusDays(7));
+            userFormid.setExpireTime(DateUtil.addDays(new Date(),7));
             formIdService.addUserFormid(userFormid);
 
         } catch (Exception e) {
@@ -608,7 +616,7 @@ public class WxOrderService {
         }
 
         order.setPayId(payId);
-        order.setPayTime(LocalDateTime.now());
+        order.setPayTime(new Date());
         order.setOrderStatus(OrderUtil.STATUS_PAY);
         if (orderService.updateWithOptimisticLocker(order) == 0) {
             // 这里可能存在这样一个问题，用户支付和系统自动取消订单发生在同时
@@ -619,7 +627,7 @@ public class WxOrderService {
             int updated = 0;
             if (OrderUtil.isAutoCancelStatus(order)) {
                 order.setPayId(payId);
-                order.setPayTime(LocalDateTime.now());
+                order.setPayTime(new Date());
                 order.setOrderStatus(OrderUtil.STATUS_PAY);
                 updated = orderService.updateWithOptimisticLocker(order);
             }
@@ -656,7 +664,7 @@ public class WxOrderService {
         String[] parms = new String[]{
                 order.getOrderSn(),
                 order.getOrderPrice().toString(),
-                DateTimeUtil.getDateTimeDisplayString(order.getAddTime()),
+                DateUtil.dateToStr(order.getAddTime(),DateUtil.DATE_MODEL_1),
                 order.getConsignee(),
                 order.getMobile(),
                 order.getAddress()
@@ -694,7 +702,7 @@ public class WxOrderService {
             return ResponseUtil.badArgumentValue();
         }
 
-        org.linlinjava.litemall.db.util.OrderHandleOption handleOption = OrderUtil.build(order);
+        OrderHandleOption handleOption = OrderUtil.build(order);
         if (!handleOption.isRefund()) {
             return ResponseUtil.fail(ORDER_INVALID_OPERATION, "订单不能取消");
         }
@@ -739,7 +747,7 @@ public class WxOrderService {
             return ResponseUtil.badArgumentValue();
         }
 
-        org.linlinjava.litemall.db.util.OrderHandleOption handleOption = OrderUtil.build(order);
+        OrderHandleOption handleOption = OrderUtil.build(order);
         if (!handleOption.isConfirm()) {
             return ResponseUtil.fail(ORDER_INVALID_OPERATION, "订单不能确认收货");
         }
@@ -748,7 +756,7 @@ public class WxOrderService {
         order.setComments(comments);
 
         order.setOrderStatus(OrderUtil.STATUS_CONFIRM);
-        order.setConfirmTime(LocalDateTime.now());
+        order.setConfirmTime(new Date());
         if (orderService.updateWithOptimisticLocker(order) == 0) {
             return ResponseUtil.updatedDateExpired();
         }
@@ -782,7 +790,7 @@ public class WxOrderService {
             return ResponseUtil.badArgumentValue();
         }
 
-        org.linlinjava.litemall.db.util.OrderHandleOption handleOption = OrderUtil.build(order);
+        OrderHandleOption handleOption = OrderUtil.build(order);
         if (!handleOption.isDelete()) {
             return ResponseUtil.fail(ORDER_INVALID_OPERATION, "订单不能删除");
         }

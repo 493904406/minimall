@@ -1,5 +1,10 @@
 package com.minimall.base.controller;
 
+import com.minimall.base.storage.StorageService;
+import com.minimall.common.utils.CharUtil;
+import com.minimall.common.utils.ResponseUtil;
+import com.minimall.db.domain.LitemallStorage;
+import com.minimall.db.service.LitemallStorageService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;

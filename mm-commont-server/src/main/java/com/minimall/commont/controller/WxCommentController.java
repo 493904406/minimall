@@ -1,17 +1,17 @@
 package com.minimall.commont.controller;
 
+import com.minimall.common.annotation.LoginUser;
+import com.minimall.common.utils.ResponseUtil;
+import com.minimall.commont.service.UserInfoService;
+import com.minimall.db.domain.LitemallComment;
+import com.minimall.db.service.LitemallCommentService;
+import com.minimall.db.service.LitemallGoodsService;
+import com.minimall.db.service.LitemallTopicService;
+import com.minimall.db.service.LitemallUserService;
+import com.minimall.user.domain.dto.UserInfo;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.linlinjava.litemall.core.util.ResponseUtil;
-import org.linlinjava.litemall.db.domain.LitemallComment;
-import org.linlinjava.litemall.db.service.LitemallCommentService;
-import org.linlinjava.litemall.db.service.LitemallGoodsService;
-import org.linlinjava.litemall.db.service.LitemallTopicService;
-import org.linlinjava.litemall.db.service.LitemallUserService;
-import org.linlinjava.litemall.wx.annotation.LoginUser;
-import org.linlinjava.litemall.wx.dto.UserInfo;
-import org.linlinjava.litemall.wx.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;

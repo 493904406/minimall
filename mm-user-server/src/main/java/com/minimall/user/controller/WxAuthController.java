@@ -26,7 +26,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.minimall.common.utils.WxResponseCode.*;
+import static com.minimall.common.responsedto.WxResponseCode.*;
 
 /**
  * @author yanxubin
