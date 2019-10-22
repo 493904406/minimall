@@ -2,7 +2,8 @@
 迷你小商城
 
 ## vue
-minimall-vue 管理后台前端
+minimall-admin 管理后台前端
+minimall-vue 网页版小商城前端
 
 ## weixin
 minimall-wx 微信小程序
