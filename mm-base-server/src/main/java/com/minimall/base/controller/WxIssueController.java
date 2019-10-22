@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/wx/issue")
+@RequestMapping("/issue")
 @Validated
 public class WxIssueController {
     private final Log logger = LogFactory.getLog(WxIssueController.class);

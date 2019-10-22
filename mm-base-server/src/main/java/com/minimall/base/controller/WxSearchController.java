@@ -1,4 +1,4 @@
-package com.minimall.search.controller;
+package com.minimall.base.controller;
 
 import com.minimall.common.annotation.LoginUser;
 import com.minimall.common.utils.ResponseUtil;
@@ -24,7 +24,7 @@ import java.util.Map;
  * 注意：目前搜索功能非常简单，只是基于关键字匹配。
  */
 @RestController
-@RequestMapping("/wx/search")
+@RequestMapping("/search")
 @Validated
 public class WxSearchController {
     private final Log logger = LogFactory.getLog(WxSearchController.class);

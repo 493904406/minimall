@@ -25,7 +25,7 @@ import static com.minimall.common.responsedto.WxResponseCode.GOODS_UNSHELVE;
  * 用户购物车服务
  */
 @RestController
-@RequestMapping("/wx/cart")
+@RequestMapping("/cart")
 @Validated
 public class WxCartController {
     private final Log logger = LogFactory.getLog(WxCartController.class);

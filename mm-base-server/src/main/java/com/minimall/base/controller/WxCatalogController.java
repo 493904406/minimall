@@ -21,7 +21,7 @@ import java.util.Map;
  * 类目服务
  */
 @RestController
-@RequestMapping("/wx/catalog")
+@RequestMapping("/catalog")
 @Validated
 public class WxCatalogController {
     private final Log logger = LogFactory.getLog(WxCatalogController.class);

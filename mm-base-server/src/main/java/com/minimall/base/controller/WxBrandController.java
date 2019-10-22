@@ -21,7 +21,7 @@ import java.util.List;
  * 专题服务
  */
 @RestController
-@RequestMapping("/wx/brand")
+@RequestMapping("/brand")
 @Validated
 public class WxBrandController {
     private final Log logger = LogFactory.getLog(WxBrandController.class);

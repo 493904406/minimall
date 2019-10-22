@@ -22,7 +22,7 @@ import java.io.IOException;
  * 对象存储服务
  */
 @RestController
-@RequestMapping("/wx/storage")
+@RequestMapping("/storage")
 @Validated
 public class WxStorageController {
     private final Log logger = LogFactory.getLog(WxStorageController.class);

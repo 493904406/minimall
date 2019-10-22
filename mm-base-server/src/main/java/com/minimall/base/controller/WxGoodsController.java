@@ -1,11 +1,11 @@
-package com.minimall.search.controller;
+package com.minimall.base.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.minimall.base.system.SystemConfig;
 import com.minimall.common.annotation.LoginUser;
-import com.minimall.common.validator.Sort;
-import com.minimall.common.validator.Order;
 import com.minimall.common.utils.ResponseUtil;
+import com.minimall.common.validator.Order;
+import com.minimall.common.validator.Sort;
 import com.minimall.db.domain.*;
 import com.minimall.db.service.*;
 import com.mysql.cj.util.StringUtils;
@@ -29,7 +29,7 @@ import java.util.concurrent.*;
  * 商品服务
  */
 @RestController
-@RequestMapping("/wx/goods")
+@RequestMapping("/goods")
 @Validated
 public class WxGoodsController {
 	private final Log logger = LogFactory.getLog(WxGoodsController.class);

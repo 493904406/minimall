@@ -35,7 +35,7 @@ import static com.minimall.common.responsedto.WxResponseCode.ORDER_UNKNOWN;
  * 需要注意这里团购规则和团购活动的关系和区别。
  */
 @RestController
-@RequestMapping("/wx/groupon")
+@RequestMapping("/groupon")
 @Validated
 public class WxGrouponController {
     private final Log logger = LogFactory.getLog(WxGrouponController.class);

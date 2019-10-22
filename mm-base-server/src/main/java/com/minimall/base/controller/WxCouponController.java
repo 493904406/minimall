@@ -30,7 +30,7 @@ import java.util.List;
  * 优惠券服务
  */
 @RestController
-@RequestMapping("/wx/coupon")
+@RequestMapping("/coupon")
 @Validated
 public class WxCouponController {
     private final Log logger = LogFactory.getLog(WxCouponController.class);

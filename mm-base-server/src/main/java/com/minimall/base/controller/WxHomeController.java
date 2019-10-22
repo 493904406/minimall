@@ -47,9 +47,8 @@ public class WxHomeController {
     @Autowired
     private LitemallCategoryService categoryService;
 
-    @Autowired
-    @Qualifier("wxGrouponRuleService")
-    private WxGrouponRuleService grouponService;
+//    @Autowired
+//    private WxGrouponRuleService wxGrouponRuleService;
 
     @Autowired
     private LitemallCouponService couponService;
@@ -105,7 +104,7 @@ public class WxHomeController {
         Callable<List> topicListCallable = () -> topicService.queryList(0, SystemConfig.getTopicLimit());
 
         //团购专区
-        Callable<List> grouponListCallable = () -> grouponService.queryList(0, 5);
+//        Callable<List> grouponListCallable = () -> wxGrouponRuleService.queryList(0, 5);
 
         Callable<List> floorGoodsListCallable = this::getCategoryList;
 
@@ -116,7 +115,7 @@ public class WxHomeController {
         FutureTask<List> hotGoodsListTask = new FutureTask<>(hotGoodsListCallable);
         FutureTask<List> brandListTask = new FutureTask<>(brandListCallable);
         FutureTask<List> topicListTask = new FutureTask<>(topicListCallable);
-        FutureTask<List> grouponListTask = new FutureTask<>(grouponListCallable);
+//        FutureTask<List> grouponListTask = new FutureTask<>(grouponListCallable);
         FutureTask<List> floorGoodsListTask = new FutureTask<>(floorGoodsListCallable);
 
         executorService.submit(bannerTask);
@@ -126,7 +125,7 @@ public class WxHomeController {
         executorService.submit(hotGoodsListTask);
         executorService.submit(brandListTask);
         executorService.submit(topicListTask);
-        executorService.submit(grouponListTask);
+//        executorService.submit(grouponListTask);
         executorService.submit(floorGoodsListTask);
 
         Map<String, Object> entity = new HashMap<>();
@@ -138,7 +137,7 @@ public class WxHomeController {
             entity.put("hotGoodsList", hotGoodsListTask.get());
             entity.put("brandList", brandListTask.get());
             entity.put("topicList", topicListTask.get());
-            entity.put("grouponList", grouponListTask.get());
+//            entity.put("grouponList", grouponListTask.get());
             entity.put("floorGoodsList", floorGoodsListTask.get());
             //缓存数据
             HomeCacheManager.loadData(HomeCacheManager.INDEX, entity);

@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  */
 @RestController
-@RequestMapping("/wx/feedback")
+@RequestMapping("/feedback")
 @Validated
 public class WxFeedbackController {
     private final Log logger = LogFactory.getLog(WxFeedbackController.class);
