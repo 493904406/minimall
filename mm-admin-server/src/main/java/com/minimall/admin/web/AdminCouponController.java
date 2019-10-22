@@ -19,7 +19,7 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @RestController
-@RequestMapping("/admin/coupon")
+@RequestMapping("/coupon")
 @Validated
 public class AdminCouponController {
     private final Log logger = LogFactory.getLog(AdminCouponController.class);

@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/admin/footprint")
+@RequestMapping("/footprint")
 @Validated
 public class AdminFootprintController {
     private final Log logger = LogFactory.getLog(AdminFootprintController.class);

@@ -32,7 +32,7 @@ import static com.minimall.admin.util.AdminResponseCode.ROLE_USER_EXIST;
 
 
 @RestController
-@RequestMapping("/admin/role")
+@RequestMapping("/role")
 @Validated
 public class AdminRoleController {
     private final Log logger = LogFactory.getLog(AdminRoleController.class);

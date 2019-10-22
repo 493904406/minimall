@@ -18,7 +18,7 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @RestController
-@RequestMapping("/admin/keyword")
+@RequestMapping("/keyword")
 @Validated
 public class AdminKeywordController {
     private final Log logger = LogFactory.getLog(AdminKeywordController.class);

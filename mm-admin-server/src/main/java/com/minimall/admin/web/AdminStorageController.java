@@ -20,7 +20,7 @@ import java.io.IOException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/admin/storage")
+@RequestMapping("/storage")
 @Validated
 public class AdminStorageController {
     private final Log logger = LogFactory.getLog(AdminStorageController.class);

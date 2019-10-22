@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/admin/stat")
+@RequestMapping("/stat")
 @Validated
 public class AdminStatController {
     private final Log logger = LogFactory.getLog(AdminStatController.class);

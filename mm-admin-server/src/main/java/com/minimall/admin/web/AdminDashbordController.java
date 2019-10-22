@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/admin/dashboard")
+@RequestMapping("/dashboard")
 @Validated
 public class AdminDashbordController {
     private final Log logger = LogFactory.getLog(AdminDashbordController.class);

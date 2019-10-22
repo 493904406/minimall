@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/admin/collect")
+@RequestMapping("/collect")
 @Validated
 public class AdminCollectController {
     private final Log logger = LogFactory.getLog(AdminCollectController.class);

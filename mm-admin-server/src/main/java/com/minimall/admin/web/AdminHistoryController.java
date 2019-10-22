@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/admin/history")
+@RequestMapping("/history")
 public class AdminHistoryController {
     private final Log logger = LogFactory.getLog(AdminHistoryController.class);
 

@@ -32,7 +32,7 @@ import static com.minimall.admin.util.AdminResponseCode.ADMIN_INVALID_ACCOUNT;
 
 
 @RestController
-@RequestMapping("/admin/auth")
+@RequestMapping("/auth")
 @Validated
 public class AdminAuthController {
     private final Log logger = LogFactory.getLog(AdminAuthController.class);

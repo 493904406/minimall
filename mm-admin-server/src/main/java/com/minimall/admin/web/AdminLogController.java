@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/admin/log")
+@RequestMapping("/log")
 @Validated
 public class AdminLogController {
     private final Log logger = LogFactory.getLog(AdminLogController.class);

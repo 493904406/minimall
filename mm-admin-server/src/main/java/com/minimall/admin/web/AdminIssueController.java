@@ -18,7 +18,7 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @RestController
-@RequestMapping("/admin/issue")
+@RequestMapping("/issue")
 @Validated
 public class AdminIssueController {
     private final Log logger = LogFactory.getLog(AdminIssueController.class);

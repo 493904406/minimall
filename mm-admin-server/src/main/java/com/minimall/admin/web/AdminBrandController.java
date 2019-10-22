@@ -17,7 +17,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
-@RequestMapping("/admin/brand")
+@RequestMapping("/brand")
 @Validated
 public class AdminBrandController {
     private final Log logger = LogFactory.getLog(AdminBrandController.class);
