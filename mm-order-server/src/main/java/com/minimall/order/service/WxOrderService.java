@@ -8,7 +8,7 @@ import com.github.binarywang.wxpay.bean.result.BaseWxPayResult;
 import com.github.binarywang.wxpay.constant.WxPayConstants;
 import com.github.binarywang.wxpay.exception.WxPayException;
 import com.github.binarywang.wxpay.service.WxPayService;
-import com.minimall.admin.qcode.QCodeService;
+import com.minimall.base.qcode.QCodeService;
 import com.minimall.base.system.SystemConfig;
 import com.minimall.common.enums.NotifyType;
 import com.minimall.common.utils.*;

@@ -1,7 +1,6 @@
 package com.minimall.admin.service;
 
 import com.minimall.admin.dto.GoodsAllinone;
-import com.minimall.admin.qcode.QCodeService;
 import com.minimall.admin.vo.CatVo;
 import com.minimall.common.utils.ResponseUtil;
 import com.minimall.db.domain.*;
@@ -39,8 +38,8 @@ public class AdminGoodsService {
     @Autowired
     private LitemallBrandService brandService;
 
-    @Autowired
-    private QCodeService qCodeService;
+    /*@Autowired
+    private QCodeService qCodeService;*/
 
     public Object list(String goodsSn, String name,
                        Integer page, Integer limit, String sort, String order) {
@@ -149,7 +148,9 @@ public class AdminGoodsService {
         Integer id = goods.getId();
 
         //将生成的分享图片地址写入数据库
-        String url = qCodeService.createGoodShareImage(goods.getId().toString(), goods.getPicUrl(), goods.getName());
+        //TODO 这段代码之后恢复
+        //String url = qCodeService.createGoodShareImage(goods.getId().toString(), goods.getPicUrl(), goods.getName());
+        String url = "暂时代码注释掉";
         goods.setShareUrl(url);
 
         // 商品基本信息表litemall_goods
@@ -219,7 +220,9 @@ public class AdminGoodsService {
         goodsService.add(goods);
 
         //将生成的分享图片地址写入数据库
-        String url = qCodeService.createGoodShareImage(goods.getId().toString(), goods.getPicUrl(), goods.getName());
+        //TODO 这段代码之后恢复
+        //String url = qCodeService.createGoodShareImage(goods.getId().toString(), goods.getPicUrl(), goods.getName());
+        String url = "暂时代码注释掉";
         if (!StringUtils.isEmpty(url)) {
             goods.setShareUrl(url);
             if (goodsService.updateById(goods) == 0) {
