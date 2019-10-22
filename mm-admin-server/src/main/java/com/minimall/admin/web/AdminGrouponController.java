@@ -22,7 +22,7 @@ import java.math.BigDecimal;
 import java.util.*;
 
 @RestController
-@RequestMapping("/groupon")
+@RequestMapping("/admin/groupon")
 @Validated
 public class AdminGrouponController {
     private final Log logger = LogFactory.getLog(AdminGrouponController.class);

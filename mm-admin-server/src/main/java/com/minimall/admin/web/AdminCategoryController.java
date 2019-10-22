@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/category")
+@RequestMapping("/admin/category")
 @Validated
 public class AdminCategoryController {
     private final Log logger = LogFactory.getLog(AdminCategoryController.class);

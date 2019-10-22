@@ -32,7 +32,7 @@ zuul:
       path: /search/**
       serviceId: search-server
     api-h:
-      path: /admin/**
+      path: /manage/**
       serviceId: admin-server
 
 

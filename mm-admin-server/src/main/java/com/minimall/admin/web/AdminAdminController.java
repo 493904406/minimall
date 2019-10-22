@@ -26,7 +26,7 @@ import static com.minimall.admin.util.AdminResponseCode.*;
 
 
 @RestController
-@RequestMapping("/admin")
+@RequestMapping("/admin/admin")
 @Validated
 public class AdminAdminController {
     private final Log logger = LogFactory.getLog(AdminAdminController.class);

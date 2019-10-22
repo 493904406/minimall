@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/comment")
+@RequestMapping("/admin/comment")
 @Validated
 public class AdminCommentController {
     private final Log logger = LogFactory.getLog(AdminCommentController.class);

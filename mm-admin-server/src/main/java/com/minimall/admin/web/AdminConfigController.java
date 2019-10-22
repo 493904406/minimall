@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/config")
+@RequestMapping("/admin/config")
 @Validated
 public class AdminConfigController {
     private final Log logger = LogFactory.getLog(AdminConfigController.class);

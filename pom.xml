@@ -23,17 +23,14 @@
         <module>mm-order-server</module>
         <module>mm-commont-server</module>
         <module>mm-user-server</module>
-        <module>mm-search-server</module>
         <module>mm-base-server</module>
         <module>mm-worker-server</module>
         <module>mm-message-server</module>
         <module>mm-common</module>
         <module>mm-api-gateway</module>
         <module>mm-common-eureka</module>
-        <module>user-consumer</module>
         <module>mm-activity-server</module>
         <module>mm-admin-server</module>
-        <module>mm-config-server</module>
         <module>mm-db-server</module>
     </modules>
 
@@ -145,11 +142,6 @@
             <dependency>
                 <groupId>com.minimall</groupId>
                 <artifactId>mm-worker-server</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.minimall</groupId>
-                <artifactId>mm-search-server</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/topic")
+@RequestMapping("/admin/topic")
 @Validated
 public class AdminTopicController {
     private final Log logger = LogFactory.getLog(AdminTopicController.class);

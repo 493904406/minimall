@@ -22,7 +22,7 @@ import static com.minimall.admin.util.AdminResponseCode.ADMIN_INVALID_ACCOUNT;
 
 
 @RestController
-@RequestMapping("/profile")
+@RequestMapping("/admin/profile")
 @Validated
 public class AdminProfileController {
     private final Log logger = LogFactory.getLog(AdminProfileController.class);

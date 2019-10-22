@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/region")
+@RequestMapping("/admin/region")
 @Validated
 public class AdminRegionController {
     private final Log logger = LogFactory.getLog(AdminRegionController.class);

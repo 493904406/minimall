@@ -17,7 +17,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
-@RequestMapping("/brand")
+@RequestMapping("/admin/brand")
 @Validated
 public class AdminBrandController {
     private final Log logger = LogFactory.getLog(AdminBrandController.class);
@@ -28,7 +28,7 @@ public class AdminBrandController {
     @RequiresPermissions("admin:brand:list")
     @RequiresPermissionsDesc(menu = {"商场管理", "品牌管理"}, button = "查询")
     @GetMapping("/list")
-    public Object list(String id, String name,
+    public Object listBrands(String id, String name,
                        @RequestParam(defaultValue = "1") Integer page,
                        @RequestParam(defaultValue = "10") Integer limit,
                        @RequestParam(defaultValue = "add_time") String sort,

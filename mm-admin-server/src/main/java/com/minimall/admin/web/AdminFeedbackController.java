@@ -18,7 +18,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/feedback")
+@RequestMapping("/admin/feedback")
 @Validated
 public class AdminFeedbackController {
     private final Log logger = LogFactory.getLog(AdminFeedbackController.class);
