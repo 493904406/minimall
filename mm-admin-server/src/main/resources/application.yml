@@ -3,20 +3,6 @@ server:
 spring:
   application:
     name: admin-server
-  profiles:
-    active: secure
-  security:
-    user:
-      name: admin
-      password: admin
-  management:
-    endpoints:
-      web:
-        exposure:
-          include: "*"
-    endpoint:
-      health:
-        show-details: always
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource                   #当前数据源操作类型
     driver-class-name: com.mysql.cj.jdbc.Driver                    #mysql驱动包
@@ -30,14 +16,6 @@ spring:
       max-wait-millis: 200
 
 eureka:
-  instance:
-    hostname: localhost
-    health-check-url-path: /actuator/health
-    instance-id: ${spring.cloud.client.ip-address}-${server.port}
-    prefer-ip-address: false
-    metadata-map:
-      user.name: ${spring.security.user.name}
-      user.password: ${spring.security.user.password}
   client:
     registerWithEureka: true
     fetchRegistry: true
