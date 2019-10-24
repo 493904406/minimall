@@ -11,6 +11,7 @@ const webpackConfig = require('./webpack.prod.conf')
 var connect = require('connect')
 var serveStatic = require('serve-static')
 
+
 const spinner = ora(
   'building for ' + process.env.env_config + ' environment...'
 )
