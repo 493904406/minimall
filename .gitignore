@@ -1,35 +1,54 @@
-# Package Files #
-#*.jar
+### gradle ###
+.gradle
+/build/
+!gradle/wrapper/gradle-wrapper.jar
+
+### STS ###
+.settings/
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+bin/
+
+### IntelliJ IDEA ###
+/.idea/
+/private/
+/storage/
+/litemall.iml
+.checkstyle
+.idea
+*.iws
+*.iml
+*.ipr
+rebel.xml
+### maven ###
+target/
 *.war
 *.ear
-target/
-.idea/
-*.iml
-.DS_Store
-log.root.directory_IS_UNDEFINED
-worksapce.xml
-.idea/worksapce.xml
-generator-output
-classes/
-.settings/
+*.zip
+*.tar
+*.tar.gz
 
-# Log Files
+### logs ####
+/logs/
 *.log
-logs/
 
-#eclipse files
-.classpath
-.project
+### temp ignore ###
+*.cache
+*.diff
+*.patch
+*.tmp
+*.java~
+*.properties~
+*.xml~
 
-# Java class files
-*.class
-LugerTest.java
-*Test.java
-
-# Gradle files
-.gradle/
-build/
-
-#rebel
-rebel.xml
-.rebel.xml.bak
+### system ignore ###
+.DS_Store
+Thumbs.db
+Servers
+.metadata
+upload
+gen_code
